@@ -1,0 +1,25 @@
+<view class="page-body">
+  <view class="page-section page-section-gap">
+    <map
+      id="myMap"
+      style="width: 100%; height: 100vh;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      subkey="GBZBZ-JGAH2-OSWUF-CPPZN-YRDVZ-U7BR3"
+      show-location
+    >
+      <cover-view class="btns">
+        <cover-image src="../../img/people.png" class="iconbtn" bindtap="changeName"></cover-image>
+        <cover-image src="../../img/like.png" class="iconbtn" bindtap="changeName"></cover-image>
+        <cover-image src="../../img/selection.png" class="iconbtn" bindtap="changeName"></cover-image>
+      </cover-view>
+      <cover-view class="btns">
+        <cover-image src="../../img/round_add_fill.png" class="iconbtn" bindtap="changeName"></cover-image>
+      </cover-view>
+    </map>
+  </view>
+  <!-- <view class="btn-area">
+    <button bindtap="moveToLocation" class="page-body-button" type="primary">移动位置</button>
+  </view> -->
+</view>

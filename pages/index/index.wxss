@@ -1,0 +1,30 @@
+/* pages/index/index.wxss */
+.page-section-gap{
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.page-body-button {
+  margin-bottom: 30rpx;
+}
+
+.btns {
+  margin-top: 140rpx;
+}
+
+.iconbtn {
+  width: 46rpx;
+  height: 46rpx;
+  padding: 13rpx;
+  margin: 40rpx;
+  border: 4rpx solid #fff;
+  border-radius: 50%;
+}
+
+.addbtn {
+  position: absolute;
+  bottom: 30rpx;
+  left: 30rpx;
+  width: 180rpx;
+  height: 180rpx;
+}
