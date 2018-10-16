@@ -1,0 +1,60 @@
+/* components/report/report.wxss */
+page {
+  background: #f3f3f3;
+}
+
+.main {
+  padding: 14rpx;
+  padding-bottom: 24rpx;
+  background: #fff;
+}
+
+.textContainer {
+  width: 94%;
+  min-height: 360rpx;
+  margin: auto;
+  margin-bottom: 30rpx;
+  padding: 16rpx;
+  font-size: 32rpx;
+}
+
+.addView {
+  position: relative;
+  padding: 5rpx 27rpx;
+}
+
+.addicon {
+  width: 180rpx;
+  height: 180rpx;
+  border: 1px solid #c9c9c9;
+  border-radius: 8rpx;
+}
+
+.chosedImg {
+  width: 100rpx;
+  height: 100rpx;
+  margin: auto;
+}
+
+.locationicon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-bottom: -6rpx;
+  margin-right: 10rpx;
+}
+
+.locationAddress {
+  color: #aaa;
+  font-size: 28rpx;
+}
+
+.reportBtn {
+  position: absolute;
+  bottom: 9rpx;
+  right: 22rpx;
+  width: 140rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  background: #F7C4C4;
+  color: #fff;
+}

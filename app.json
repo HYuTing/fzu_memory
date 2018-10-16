@@ -1,12 +1,12 @@
 {
   "pages":[
+    "components/detail/detail",
     "pages/index/index",
     "pages/demo/index",
-    "pages/rankinglist/rankinglist",
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationStyle": "custom"
+    "navigationBarBackgroundColor": "#F7C4C4"
   }
 }

@@ -22,9 +22,12 @@
 }
 
 .addbtn {
-  position: absolute;
-  bottom: 30rpx;
-  left: 30rpx;
   width: 180rpx;
   height: 180rpx;
+}
+
+.addbtncontainer {
+  position: absolute;
+  bottom: 68rpx;
+  right: 32rpx;
 }

@@ -14,8 +14,8 @@
         <cover-image src="../../img/like.png" class="iconbtn" bindtap="changeName"></cover-image>
         <cover-image src="../../img/selection.png" class="iconbtn" bindtap="changeName"></cover-image>
       </cover-view>
-      <cover-view class="btns">
-        <cover-image src="../../img/round_add_fill.png" class="iconbtn" bindtap="changeName"></cover-image>
+      <cover-view class="btns addbtncontainer">
+        <cover-image src="../../img/round_add_fill.png" class="addbtn" bindtap="changeName"></cover-image>
       </cover-view>
     </map>
   </view>

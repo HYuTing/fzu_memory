@@ -1,0 +1,52 @@
+<!--components/detail/detail.wxml-->
+<view >
+  <!--<image src='../../img/back2.png' class='reback'></image>-->
+  <view class='main'>
+    <view class='userInfo'>
+      <image src='../../img/user_head.png' class='userHeader'></image>
+      <view class='uesrName'>FZU_USER<image class="star" src="../../img/star.png"></image></view>
+      <text class='new_time'>12:00</text>
+      <text class="rank_text">F赞榜</text>
+      <text class="rank_text2"> 第 </text>
+      <text class="rank_text">76</text>
+      <text class="rank_text2"> 名</text>
+    </view>
+    
+    <view class="main-content" >
+      <view class='textContainer'>
+        <text class='texts'>怀念当初一起在西二的日子</text>
+        <image src='../../img/test.jpg' class='textImg' mode="widthFix"></image>
+      </view>
+      <view class='locadInfo'>
+        <image src='../../img/locationicon.png' class='locadicon'></image>
+        福州市闽侯县
+      </view>
+      <view class='iconbtns'>
+        <image src='../../img/like2.png' class='iconbtn'></image>
+        <text class="like_num">1533</text>
+        <image src='../../img/share.png' class='iconbtn'></image>
+         <text class="share_num">3</text>     
+        <!--<image src='../../img/start.png' class='iconbtn'></image>-->
+      </view>
+    </view>
+    <view class="underline"></view>
+    <view class='commentContainer'>
+      <view class='comments'>      
+        <text class="comment1" id="usrcmt-name">Michead</text>
+        <text class="comment2">：</text>
+        <text class="comment2">下次记得叫上我</text>
+      </view>
+      <view class='comments'>      
+        <text class="comment1" id="usrcmt-name">Michead</text>
+        <text class="comment2">：</text>
+        <text class="comment2">下次记得叫上我</text>
+      </view>
+      <view class='comments'>      
+        <text class="comment1" id="usrcmt-name">Michead</text>
+        <text class="comment2">：</text>
+        <text class="comment2">下次记得叫上我</text>
+      </view>
+      <input placeholder='点击进行评论' placeholder-class="placeholderstyle"></input> 
+    </view>
+  </view>
+</view>
