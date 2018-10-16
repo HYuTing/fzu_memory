@@ -1,7 +1,7 @@
 {
   "pages":[
-    "components/detail/detail",
     "pages/index/index",
+    "components/report/report",
     "pages/demo/index",
     "pages/logs/logs"
   ],

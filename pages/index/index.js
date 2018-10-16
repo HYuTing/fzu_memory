@@ -40,7 +40,7 @@ Page({
     var that = this;
     wx.getLocation({
       success: function(res) {
-        console.log(res);
+        //console.log(res);
         that.setData({
           latitude: res.latitude,
           longitude: res.longitude,
