@@ -9,6 +9,9 @@
       subkey="GBZBZ-JGAH2-OSWUF-CPPZN-YRDVZ-U7BR3"
       show-location
     >
+      <cover-view class='loginprompt' wx:if="{{loginflag == 0}}">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='loginbtn'> 开启 </button>
+      </cover-view>
       <cover-view class="btns">
         <cover-image src="../../img/people.png" class="iconbtn" bindtap="changeName"></cover-image>
         <cover-image src="../../img/like.png" class="iconbtn" bindtap="changeName"></cover-image>
@@ -17,6 +20,14 @@
       <cover-view class="btns addbtncontainer">
         <cover-image src="../../img/round_add_fill.png" class="addbtn" bindtap="changeName"></cover-image>
       </cover-view>
+
+      <cover-view class='scroll-box' wx:if="{{loginflag == 1}}">
+        <cover-view class='card'></cover-view>
+        <cover-view class='card'></cover-view>
+        <cover-view class='card'></cover-view>
+        <cover-view class='card'></cover-view>
+      </cover-view>
+
     </map>
   </view>
   <!-- <view class="btn-area">

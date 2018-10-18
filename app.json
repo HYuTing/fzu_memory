@@ -1,12 +1,14 @@
 {
   "pages":[
-    "pages/index/index",
+    "components/navbar/navbar",
+    "components/detail/detail",
     "components/report/report",
+    "pages/index/index",
     "pages/demo/index",
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#F7C4C4"
+    "navigationStyle": "custom"
   }
 }

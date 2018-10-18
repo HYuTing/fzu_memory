@@ -13,8 +13,11 @@ for (i = 1; i <= 10; i++) {
   marks.push(new Person(i, 26.050 + i / 10, 119.1981 + i / 10, "张金铭"));
 }
 
+const app = getApp()
+
 Page({
   data: {
+    loginflag: 0,
     latitude: 26.056,
     longitude: 119.1981,
     markers: [{
@@ -37,19 +40,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx.getLocation({
-      success: function(res) {
-        //console.log(res);
-        that.setData({
-          latitude: res.latitude,
-          longitude: res.longitude,
-          // 'markers[0].latitude': res.latitude,
-          // 'markers[0].longitude': res.longitude
-          markers: marks
-        })
-        // console.log(that.data.markers);
-      },
+    wx.getSetting({
+      success: res => {
+        console.log(res.authSetting);
+        if (res.authSetting["scope.userInfo"] == true) {
+          this.setData({
+            loginflag: 1
+          })
+        }
+      }
     })
   },
 
@@ -68,6 +67,58 @@ Page({
     wx.navigateTo({
       url: '../demo/index',
     })
-  }
+  },
   
+  getUserInfo: function (e) {
+    wx.login({
+      success: r => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (r.code) {
+          // 获取用户信息
+          wx.getUserInfo({
+            success: res => {
+              this.setData({
+                loginflag: 1
+              })
+              wx.request({
+                url: 'http://time.huanglexing.com/user/oauth',
+                method: 'POST',
+                data: {
+                  code: r.code,
+                  encryptedData: res.encryptedData,
+                  ivStr: res.iv
+                },
+                success: function (res) {
+                  console.log(res.data.text)
+                },
+                fail: function (res) {
+                  console.log(res.data.text)
+                }
+              })
+            },
+            fail: res => {
+              wx.showModal({
+                title: 'lxGG写的好辛苦',
+                content: '授权一个吧',
+              })
+            }
+          })
+
+          wx.getLocation({
+            success: res => {
+              this.setData({
+                latitude: res.latitude,
+                longitude: res.longitude,
+                markers: marks
+              })
+              // console.log(that.data.markers);
+            },
+          })
+
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
+    })
+  }
 })

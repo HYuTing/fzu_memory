@@ -39,6 +39,7 @@ Page({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
+          
         }
       })
     }
@@ -49,6 +50,41 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+    wx.login({
+      success: r => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (r.code) {
+          // 获取用户信息
+          wx.getUserInfo({
+            success: res => {
+              app.globalData.userInfo = res.userInfo
+              this.setData({
+                userInfo: res.userInfo,
+                hasUserInfo: true
+              })
+              wx.request({
+                url: 'http://time.huanglexing.com/user/oauth',
+                method: 'POST',
+                data: {
+                  code: r.code,
+                  encryptedData: res.encryptedData,
+                  ivStr: res.iv
+                },
+                success: function (res) {
+                  console.log(res.data.text)
+                },
+                fail: function(res) {
+                  console.log(res.data.text)
+                }
+              })
+            }
+          })
+          
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
     })
   }
 })

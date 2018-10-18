@@ -50,7 +50,7 @@
 
 .rank_text2 {
   font-size: 28rpx;
-  color: #696969;
+  color: #8a8a8a;
 }
 
 .texts {
@@ -128,7 +128,7 @@ input {
   margin-left: -4rpx;
   padding-left: 24rpx;
   font-size: 28rpx;
-  color:#dbdbdb;
+  color:#bfbfbf;
   background: #F8F8F8;
 }
 .placeholderstyle {
