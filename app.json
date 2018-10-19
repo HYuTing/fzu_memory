@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/share/share",
-    "pages/report/report",
+    "pages/homepage/homepage",
     "pages/detail/detail",
+    "pages/report/report",
     "pages/index/index",
+    "pages/share/share",
     "pages/demo/index",
     "pages/logs/logs"
   ],

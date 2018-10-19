@@ -15,6 +15,7 @@ page {
 
 .userInfo {
   position: relative;
+  width: 100%;
   margin-bottom: 36rpx;
 }
 
@@ -65,7 +66,8 @@ page {
 .star {
   position: absolute;
   top: 3rpx;
-  right: -260rpx;
+  right: 0;
+  display: block;
   width: 40rpx;
   height: 40rpx;
 }

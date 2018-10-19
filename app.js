@@ -28,6 +28,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    URL: 'http://time.huanglexing.com'
   }
 })

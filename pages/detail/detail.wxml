@@ -1,12 +1,13 @@
 <!--components/detail/detail.wxml-->
 <view>
   <!--<image src='../../img/back2.png' class='reback'></image>-->
-  <navBar navbarTitle = '详情'/>
+  <navBar navbarTitle = '详情' navbarColor = '#D59893'/>
   <view class='main' style='margin-top: {{marginTop*2}}rpx;'>
     <view class='userInfo'>
       <image src='../../img/user_head.png' class='userHeader'></image>
-      <view class='uesrName'>FZU_USER<image class="star" src="../../img/star.png"></image></view>
-      <text class='new-time'>12:00</text>
+      <view class='uesrName'>{{nickName}}</view>
+      <image class="star" src="../../img/star.png"></image>
+      <text class='new-time'>{{time}}</text>
       <!-- <text class="rank-text">F赞榜</text>
       <text class="rank-text2"> 第 </text>
       <text class="rank-text">76</text>
@@ -15,18 +16,18 @@
     
     <view class="main-content" >
       <view class='textContainer'>
-        <text class='texts'>怀念当初一起在西二的日子</text>
-        <image src='../../img/test.jpg' class='textImg' mode="widthFix"></image>
+        <text class='texts'>{{content}}</text>
+        <image src='{{imgUrl}}' class='textImg' mode="widthFix"></image>
       </view>
       <view class='locadInfo'>
         <image src='../../img/locationicon.png' class='locadicon'></image>
-        福州市闽侯县
+        {{location}}
       </view>
       <view class='iconbtns'>
         <image src='../../img/like2.png' class='iconbtn'></image>
-        <text class="like-num">1533</text>
+        <text class="like-num">{{praiseNum}}</text>
         <image src='../../img/share.png' class='iconbtn'></image>
-         <text class="share-num">3</text>     
+         <text class="share-num"></text>     
         <!--<image src='../../img/start.png' class='iconbtn'></image>-->
       </view>
     </view>

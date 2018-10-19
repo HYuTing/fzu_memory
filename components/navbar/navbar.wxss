@@ -6,7 +6,7 @@
   font-size: 36rpx;
   color: rgb(255, 255, 255);
   z-index: 999;
-  background: #D59893;
+  /* background: #D59893; */
 }
 
 .nav-title {

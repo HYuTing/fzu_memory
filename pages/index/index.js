@@ -53,7 +53,7 @@ Page({
             success: r => {
               if (r.code) {
                 wx.request({
-                  url: 'http://time.huanglexing.com/user/login',
+                  url: app.globalData.URL + '/user/login',
                   method: 'GET',
                   data: {
                     "code": r.code
@@ -113,7 +113,7 @@ Page({
                 loginflag: 1
               })
               wx.request({
-                url: 'http://time.huanglexing.com/user/oauth',
+                url: app.globalData.URL + '/user/oauth',
                 method: 'POST',
                 data: {
                   code: r.code,

@@ -1,6 +1,6 @@
 <!--components/report/report.wxml-->
 <view>
-  <navBar navbarTitle = '发表'/>
+  <navBar navbarTitle = '发表' navbarColor = '#D59893'/>
   <view class='main' style='margin-top: {{marginTop*2}}rpx;'>
     <textarea type='text'
     placeholder='编辑文本...'
@@ -14,7 +14,7 @@
     ></textarea>
     <view class='addView' style='margin-bottom: 14rpx;'>
       <view class='addImg' bindtap='chooseImage'>
-        <image src='{{src}}' class='addicon' mode="widthFix"></image>
+        <image src='{{src}}' class='addicon' mode="aspectFill"></image>
       </view>
     </view>
     <view class='addView'>

@@ -1,5 +1,10 @@
 <!--pages/share/share.wxml-->
 <view>
   <navBar navbarTitle = '分享'/>
-  <canvas canvas-id="shareCanvas" style="width:600px;height:900px"></canvas>
+  <view id="posterWrp"> 
+    <view class="cardCreateWrp"> 
+      <image src="{{cardCreateImgUrl}}" mode="aspectFill" class="imgCardWrp" bindload="bindload" style="width:{{WIDTH}}rpx;height:{{HEIGHT}}rpx;"></image>
+    </view>
+    <canvas class="myCanvas" canvas-id="myCanvas" style="width:{{WIDTH}}px;height:{{HEIGHT}}px;" ></canvas>
+  </view>
 </view>

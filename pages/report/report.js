@@ -12,7 +12,8 @@ Page({
     src: '../../img/add.png',
     longitude: '',
     latitude: '',
-    positionInfo: ''
+    positionInfo: '',
+    stoken: ''
   },
 
   /**
@@ -100,7 +101,7 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function(res) {
-        console.log(res);
+        // console.log(res);
         that.setData({
           src: res.tempFilePaths
         })
@@ -116,45 +117,43 @@ Page({
   
   report: function() {
     var that = this
-    console.log(that.data.content);
-    
-    var stoken;
-    wx.getStorage({
-      key: 'userTOKEN',
-      success: function(res) {
-        stoken = res.data
-      },
-    })
 
     wx.request({
-      url: 'http://time.huanglexing.com/time/upload',
+      url: app.globalData.URL + '/time/upload',
       method: 'POST',
       header: {
-        "S-TOKEN": stoken
+        "Content-Type": 'application/json',
+        "S-TOKEN": wx.getStorageSync("userTOKEN")
       },
       data: {
         content: that.data.content,
         latitude: that.data.latitude,
         longitude: that.data.longitude,
-        lable: '',
-        title: ''
+        location: that.data.positionInfo
       },
       success: res => {
-        // wx.uploadFile({
-        //   url: '',
-        //   filePath: that.data.src,
-        //   name: 'img',
-        //   header: {
-        //     "S-TOKEN": stoken
-        //   },
-        //   success: function() {
-
-        //   },
-        //   fail: function() {
-            
-        //   }
-        // })
-        console.log('发表成功：'+res.data.text)
+        //console.log(res.data);
+        wx.uploadFile({
+          url: 'http://up-z2.qiniup.com',
+          filePath: that.data.src[0],
+          name: 'file',
+          header: {
+            "Content-Type": "multipart/form-data"
+          },
+          formData: {
+            'key': res.data.data.key,
+            'token': res.data.data.uploadToken
+          },
+          success: function (r) {
+            console.log(res.data),
+            console.log(res.data.data.key),
+            console.log(res.data.data.uploadToken)
+          },
+          fail: function() {
+            console.log('上传失败')
+            console.log(res.data.key)
+          }
+        })
 
         wx.showModal({
           title: '分享',
@@ -176,7 +175,7 @@ Page({
         })
       },
       fail: res => {
-        console.log('发表失败：'+res.data.text)
+        //console.log('发表失败：'+res.data.text)
       }
     })
   }
