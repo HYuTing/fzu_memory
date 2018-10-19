@@ -1,14 +1,14 @@
 {
-  "pages":[
-    "components/navbar/navbar",
-    "components/detail/detail",
-    "components/report/report",
+  "pages": [
+    "pages/share/share",
+    "pages/report/report",
+    "pages/detail/detail",
     "pages/index/index",
     "pages/demo/index",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationStyle": "custom"
   }
 }

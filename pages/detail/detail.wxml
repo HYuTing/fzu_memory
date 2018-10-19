@@ -1,15 +1,16 @@
 <!--components/detail/detail.wxml-->
-<view >
+<view>
   <!--<image src='../../img/back2.png' class='reback'></image>-->
-  <view class='main'>
+  <navBar navbarTitle = '详情'/>
+  <view class='main' style='margin-top: {{marginTop*2}}rpx;'>
     <view class='userInfo'>
       <image src='../../img/user_head.png' class='userHeader'></image>
       <view class='uesrName'>FZU_USER<image class="star" src="../../img/star.png"></image></view>
-      <text class='new_time'>12:00</text>
-      <text class="rank_text">F赞榜</text>
-      <text class="rank_text2"> 第 </text>
-      <text class="rank_text">76</text>
-      <text class="rank_text2"> 名</text>
+      <text class='new-time'>12:00</text>
+      <!-- <text class="rank-text">F赞榜</text>
+      <text class="rank-text2"> 第 </text>
+      <text class="rank-text">76</text>
+      <text class="rank-text2"> 名</text> -->
     </view>
     
     <view class="main-content" >
@@ -23,9 +24,9 @@
       </view>
       <view class='iconbtns'>
         <image src='../../img/like2.png' class='iconbtn'></image>
-        <text class="like_num">1533</text>
+        <text class="like-num">1533</text>
         <image src='../../img/share.png' class='iconbtn'></image>
-         <text class="share_num">3</text>     
+         <text class="share-num">3</text>     
         <!--<image src='../../img/start.png' class='iconbtn'></image>-->
       </view>
     </view>

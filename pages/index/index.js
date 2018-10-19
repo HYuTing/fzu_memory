@@ -48,6 +48,32 @@ Page({
             loginflag: 1
           })
         }
+        if (this.data.loginflag == 1) {
+          wx.login({
+            success: r => {
+              if (r.code) {
+                wx.request({
+                  url: 'http://time.huanglexing.com/user/login',
+                  method: 'GET',
+                  data: {
+                    "code": r.code
+                  },
+                  success: function (res) {
+                    console.log(res.data)
+                    //console.log(res.header["S-TOKEN"])
+                    wx.setStorage({
+                      key: 'userTOKEN',
+                      data: res.header["S-TOKEN"],
+                    })
+                  },
+                  fail: function (res) {
+                    console.log(res.data.text)
+                  }
+                })
+              }
+            }
+          })
+        }
       }
     })
   },
@@ -69,6 +95,12 @@ Page({
     })
   },
   
+  toReport: function() {
+    wx.navigateTo({
+      url: '../report/report',
+    })
+  },
+
   getUserInfo: function (e) {
     wx.login({
       success: r => {

@@ -11,11 +11,12 @@ page {
 
 .textContainer {
   width: 94%;
-  min-height: 360rpx;
+  min-height: 300rpx;
   margin: auto;
   margin-bottom: 30rpx;
-  padding: 16rpx;
-  font-size: 32rpx;
+  padding: 12rpx 16rpx;
+  font-size: 34rpx;
+  color: #303133;
 }
 
 .addView {
@@ -23,11 +24,16 @@ page {
   padding: 5rpx 27rpx;
 }
 
-.addicon {
-  width: 180rpx;
-  height: 180rpx;
-  border: 1px solid #c9c9c9;
+.addImg {
+  width: 200rpx;
+  height: 200rpx;
+  border: 1px solid #E4E7ED;
   border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.addicon {
+  width: 100%;
 }
 
 .chosedImg {
@@ -44,7 +50,7 @@ page {
 }
 
 .locationAddress {
-  color: #aaa;
+  color: #C0C4CC;
   font-size: 28rpx;
 }
 
@@ -55,6 +61,6 @@ page {
   width: 140rpx;
   line-height: 60rpx;
   font-size: 28rpx;
-  background: #F7C4C4;
+  background: #D59893;
   color: #fff;
 }

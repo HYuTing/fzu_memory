@@ -1,1 +1,26 @@
 /* components/navbar/navbar.wxss */
+.nav-wrap {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 36rpx;
+  color: rgb(255, 255, 255);
+  z-index: 999;
+  background: #D59893;
+}
+
+.nav-title {
+  position: absolute;
+  bottom: 26rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.reback-btn {
+  position: absolute;
+  bottom: 25rpx;
+  left: 30rpx;
+  width: 50rpx;
+  height: 50rpx;
+}

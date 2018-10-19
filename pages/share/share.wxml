@@ -1,0 +1,5 @@
+<!--pages/share/share.wxml-->
+<view>
+  <navBar navbarTitle = '分享'/>
+  <canvas canvas-id="shareCanvas" style="width:600px;height:900px"></canvas>
+</view>

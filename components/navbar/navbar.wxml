@@ -1,2 +1,7 @@
 <!--components/navbar/navbar.wxml-->
-<text>components/navbar/navbar.wxml</text>
+<view class='nav-wrap' style='height: {{height*2}}rpx;'>
+  <view class='nav-title'>{{navbarTitle}}</view>
+  <view class='nav-capsule'>
+    <image src='../../img/back.png' class='reback-btn' bindtap='_navback'></image>
+  </view>
+</view>
