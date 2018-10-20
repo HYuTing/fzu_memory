@@ -107,13 +107,19 @@ Page({
 
   changeName: function() {
     wx.navigateTo({
-      url: '../detail/detail',
+      url: '../test/index',
     })
   },
   
   tohomepage: function() {
     wx.navigateTo({
       url: '../homepage/homepage',
+    })
+  },
+
+  toranklist: function() {
+    wx.navigateTo({
+      url: '../ranklist/ranklist',
     })
   },
 

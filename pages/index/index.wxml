@@ -14,7 +14,7 @@
       <cover-view class="btns" wx:if="{{loginflag == 1}}">
         <cover-image src="../../img/people1.png" class="iconbtn" bindtap="tohomepage"></cover-image>
         <cover-image src="../../img/like1.png" class="iconbtn" bindtap="changeName"></cover-image>
-        <cover-image src="../../img/selection1.png" class="iconbtn" bindtap="changeName"></cover-image>
+        <cover-image src="../../img/selection1.png" class="iconbtn" bindtap="toranklist"></cover-image>
       </cover-view>
       <cover-view class="btns addbtncontainer" wx:if="{{loginflag == 1}}">
         <cover-image src="../../img/round_add_fill.png" class="addbtn" bindtap="toReport"></cover-image>

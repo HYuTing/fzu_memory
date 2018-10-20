@@ -1,0 +1,36 @@
+<view>
+  <navBar navbarTitle = '详情' navbarColor = '#303030'/>
+  <view class="main" style='margin-top: {{marginTop*2}}rpx;'>
+    <view class="xin-list" bindtouchend="moveItem" bindtouchstart="moveStart">
+      <block wx:for="{{xinList}}" wx:key="key">
+        <view class="single" style="opacity:{{item.display}};transform: translateX({{item.slateX}}) scale({{item.scale}});z-index:{{item.zIndex}};transform-origin: 100% 50% 0;{{item.style}}">
+          <view class='detailmain'>
+            <view class='userInfo'>
+              <image src='{{item.avatarUrl}}' class='userHeader'></image>
+              <view class='uesrName'>{{item.nickName}}</view>
+              <image class="star" src="../../img/selection3.png" bindtap='collect'></image>
+              <text class='new-time'>{{item.time}}</text>
+            </view>
+            
+            <view class="main-content" >
+              <view class='textContainer'>
+                <text class='texts'>{{item.content}}</text>
+                <image src='{{item.imgUrl}}' class='textImg' mode="widthFix"></image>
+              </view>
+              <view class='locadInfo'>
+                <image src='../../img/locationicon.png' class='locadicon'></image>
+                {{item.location}}
+              </view>
+              <view class='iconbtns'>
+                <image src='../../img/like{{item.isPraise+3}}.png' class='iconbtn' bindtap='like'></image>
+                <text class="like-num">{{item.praiseNum}}</text>
+                <image src='../../img/share.png' class='iconbtn'></image>
+                <text class="share-num"></text>     
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

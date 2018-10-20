@@ -1,104 +1,246 @@
-// pages/share/share.js
+//share.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    imageBg: "../../img/test.jpg",//背景图片
+    imageHead: "../../img/user-head.jpg",//头像
+    imageEwm: "../../img/logo.jpg",//二维码
+    username: "Loutloi",//用户名
+    text: "Now is 2:00am, it's time to sleep!",//文字说明
+    maskHidden: false,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    // 页面初始化 options为页面跳转所带来的参数
+    var size = this.setCanvasSize();//动态设置画布大小
+    console.log(size);
+    this.createNewImg();
+    //this.downloadImages();
+    //创建初始化图片
+  },
+  //适配不同屏幕大小的canvas    生成的分享图宽高分别是 750  和940，老实讲不知道这块到底需不需要，然而。。还是放了，因为不写这块的话，模拟器上的图片大小是不对的。。。
 
+  setCanvasSize: function () {
+    var size = {};
+    try {
+      var res = wx.getSystemInfoSync();
+      var scale = 750;//画布宽度
+      var scaleH = 1000 / 750;//生成图片的宽高比例
+      var width = res.windowWidth;//画布宽度
+      var height = res.windowWidth * scaleH;//画布的高度
+      size.w = width;
+      size.h = height;
+
+    } catch (e) {
+      // Do something when catch error
+      console.log("获取设备信息失败" + e);
+    }
+    return size;
+  },
+  //将1绘制到canvas的固定
+  setUsername: function (context,name) {
+    let that = this;
+    var size = that.setCanvasSize();
+    var textFir = name;
+    console.log(textFir);
+    context.setFontSize(16);
+    context.setTextAlign("center");
+    context.setFillStyle("black");
+    //context.fillText(textFir, size.w * 0.12, size.h * 0.296);
+    context.fillText(textFir, size.w * 0.20, size.h * 0.34);
+    context.stroke();
+  },
+  //将2绘制到canvas的固定
+  nextText: function(context){
+    let that = this;
+    var text1 = '我在福大时光机发布了一段新时光,';
+    var text2 = "长按扫码查看详情吧！";
+    var size = that.setCanvasSize();
+    context.setFontSize(10)
+    context.setFillStyle("#bfbfbf")
+    context.fillText(text1, size.w * 0.27, size.h*0.34 + 0 * 16);
+    context.fillText(text2, size.w * 0.198, size.h * 0.34 + 1 * 16);
+  },
+  drawHead: function(contex,img) {
+    let that = this;
+    var size = that.setCanvasSize();
+    var avatarurl_width = 80;    //绘制的头像宽度
+    var avatarurl_heigth = 80;   //绘制的头像高度
+    var avatarurl_x = size.w * 0.098;   //x
+    var avatarurl_y = size.h * 0.1;   //y
+    console.log(avatarurl_x);
+    contex.save();
+    contex.beginPath(); //开始绘制
+    console.log(avatarurl_y);
+    //先画个圆   前两个参数确定了圆心 （x,y） 坐标  第三个参数是圆的半径  四参数是绘图方向  默认是false，即顺时针
+    contex.arc(avatarurl_width / 2 + avatarurl_x, avatarurl_heigth / 2 + avatarurl_y, avatarurl_width / 2, 0, Math.PI * 2, false);
+    contex.clip();//画好了圆 剪切  原始画布中剪切任意形状和尺寸。
+    contex.drawImage(img, avatarurl_x, avatarurl_y, avatarurl_width, avatarurl_heigth); // 推进去图片
+    contex.restore(); //恢复之前保存的绘图上下文
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    var that = this
-    wx.getImageInfo({
-      src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539957722096&di=036e1846dc0fe9a028d41a8e21ee0f43&imgtype=0&src=http%3A%2F%2Fpic31.photophoto.cn%2F20140417%2F0022005417481244_b.jpg',
-      success: function(res) {
-        var imgPath = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539957722096&di=036e1846dc0fe9a028d41a8e21ee0f43&imgtype=0&src=http%3A%2F%2Fpic31.photophoto.cn%2F20140417%2F0022005417481244_b.jpg'
-        var bgImgPath = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539957722096&di=036e1846dc0fe9a028d41a8e21ee0f43&imgtype=0&src=http%3A%2F%2Fpic31.photophoto.cn%2F20140417%2F0022005417481244_b.jpg'
-        const ctx = wx.createCanvasContext('myCanvas')
-        ctx.drawImage(res.path, 0, 0, 600, 900)
+drawTextVertical:function(context, text, x, y) {
+    var arrText = text.split('');
+    var arrWidth = arrText.map(function (letter) {
+      return 16;
+    });
 
-        ctx.setFillStyle('white')
-        ctx.fillRect(0, 520, 600, 280);
+    var align = context.textAlign;
+    var baseline = context.textBaseline;
 
-        ctx.drawImage(imgPath, 30, 550, 60, 60);
-        ctx.drawImage(bgImgPath, 30, 550, 60, 60);
-        ctx.drawImage(imgPath, 410, 610, 160, 160);
+    if(align == 'left') {
+  x = x + Math.max.apply(null, arrWidth) / 2;
+} else if (align == 'right') {
+  x = x - Math.max.apply(null, arrWidth) / 2;
+}
+if (baseline == 'bottom' || baseline == 'alphabetic' || baseline == 'ideographic') {
+  y = y - arrWidth[0] / 2;
+} else if (baseline == 'top' || baseline == 'hanging') {
+  y = y + arrWidth[0] / 2;
+}
 
-        ctx.setFontSize(28)
-        ctx.setFillStyle('#6F6F6F')
-        ctx.fillText('妖妖灵', 110, 590)
+context.textAlign = 'center';
+context.textBaseline = 'middle';
 
-        ctx.setFontSize(30)
-        ctx.setFillStyle('#111111')
-        ctx.fillText('宠友们快来围观萌宠靓照', 30, 660)
-        ctx.fillText('我在萌爪幼稚园', 30, 700)
+// 开始逐字绘制
+arrText.forEach(function (letter, index) {
+  // 确定下一个字符的纵坐标位置
+  var letterWidth = arrWidth[index];
+  // 是否需要旋转判断
+  var code = letter.charCodeAt(0);
+  if (code <= 256) {
+    context.translate(x, y);
+    // 英文字符，旋转90°
+    context.rotate(90 * Math.PI / 180);
+    context.translate(-x, -y);
+  } else if (index > 0 && text.charCodeAt(index - 1) < 256) {
+    // y修正
+    y = y + arrWidth[index - 1] / 2;
+  }
+  context.fillText(letter, x, y);
+  // 旋转坐标系还原成初始态
+  context.setTransform(1, 0, 0, 1, 0, 0);
+  // 确定下一个字符的纵坐标位置
+  var letterWidth = arrWidth[index];
+  y = y + letterWidth;
+});
+// 水平垂直对齐方式还原
+context.textAlign = align;
+context.textBaseline = baseline;
+},
 
-        ctx.setFontSize(24)
-        ctx.fillText('长按扫码查看详情', 30, 770)
-        ctx.draw()
+  lastText: function (context,text,x,y) {
+  let that = this;
+  var size = that.setCanvasSize();
+  var textFir = text;
+  console.log(textFir);
+  context.setFontSize(12);
+  context.setTextAlign("center");
+  context.setFillStyle("#bfbfbf");
+  this.drawTextVertical(context, textFir, x, y);
+},
+
+  /*downloadImages: function () {
+
+    let that = this;
+    wx.downloadFile({  //背景图
+      url: that.data.imageBg,
+      success: function (res) {
+       
+        wx.downloadFile({  //内容缩略图
+          url: that.data.imageHead,
+          success: function (res1) {
+            wx.downloadFile({
+              url: that.data.imageEwm,
+              success: function (res2) {//  小程序二维码图
+                that.createNewImg(res.tempFilePath, res1.tempFilePath, res2.tempFilePath);
+              },
+              fail: function () {
+              }
+            });
+          }
+        });
       }
-    }),
+    })
+  },*/
+
+
+  //将canvas转换为图片保存到本地，然后将图片路径传给image图片的src
+  createNewImg: function (imageZw, imageHead, imageEwm) {
+    var that = this;
+    var size = that.setCanvasSize();
+    var context = wx.createCanvasContext('myCanvas');
+    //var path = "../../img/test2.jpg";
+    var imageHead = that.data.imageHead;
+    var imageEwm = that.data.imageEwm;
+    var imageZw = that.data.imageBg;
+    console.log(imageEwm);
+    var imageWrite = "../../img/write.png";
+    var name = that.data.username;
+    var texts = that.data.text;
+    //context.drawImage(path, 0, 0, size.w, size.h);
+    context.setFillStyle('#ffffff');
+    context.fillRect(0, 0, size.w, size.h);
+    context.drawImage(imageZw, 0, size.h *0.566, size.w * 0.8, size.w * 0.5);
+    this.drawHead(context, imageHead);
+    this.setUsername(context,name);
+    //this.nextText(context);
+    this.lastText(context, "我在福大时光机", size.w * 0.52, size.h * 0.20);
+    this.lastText(context, "发布了一段新时光", size.w * 0.58, size.h * 0.20);
+    this.lastText(context, "长按扫码查看详情吧", size.w * 0.64, size.h * 0.20);
+    //this.lastText(context);
+    console.log(size.w, size.h)
+    context.drawImage(imageEwm, size.w * 0.080, size.h * 0.41, size.w * 0.26, size.w * 0.26);
+    context.drawImage(imageWrite, size.w * 0.54, size.h * 0.09, size.w * 0.08, size.w * 0.08);
+    context.draw();
+    //将生成好的图片保存到本地，需要延迟一会，绘制期间耗时
+    wx.showToast({
+      title: '生成中...',
+      icon: 'loading',
+      duration: 1800
+    });
+    setTimeout(function () {
       wx.canvasToTempFilePath({
-        x: 0,
-        y: 0,
-        width: 600,
-        height: 800,
-        destWidth: 600,
-        destHeight: 800,
         canvasId: 'myCanvas',
         success: function (res) {
-          console.log(res.tempFilePath);
+          var tempFilePath = res.tempFilePath;
+          console.log(tempFilePath);
           that.setData({
-            shareImgSrc: res.tempFilePath
+            imagePath: tempFilePath,
+            canvasHidden: false,
+            maskHidden: true,
+          });
+          //将生成的图片放入到《image》标签里
+          var img = that.data.imagePath;
+          wx.previewImage({
+            current: img, // 当前显示图片的http链接
+            urls: [img] // 需要预览的图片http链接列表
           })
+          /*wx.downloadFile({
+            url: img,
+            success: function (res) {
+              console.log(res)
+              wx.saveImageToPhotosAlbum({
+                filePath: res.tempFilePath,
+                success: function (res) {
+                  console.log(res)
+                },
+                fail: function (res) {
+                  console.log(res)
+                  console.log('fail')
+                }
+              })
+            },
+            fail: function () {
+              console.log('fail')
+            }
+          })*/
 
         },
         fail: function (res) {
-          console.log(res)
+          console.log(res);
         }
-      }),
-      wx.saveImageToPhotosAlbum({
-        filePath: that.data.shareImgSrc,
-        success(res) {
-          wx.showModal({
-            title: '存图成功',
-            content: '图片成功保存到相册了，去发圈噻~',
-            showCancel: false,
-            confirmText: '好哒',
-            confirmColor: '#72B9C3',
-            success: function (res) {
-              if (res.confirm) {
-                console.log('用户点击确定');
-              }
-              that.hideShareImg()
-            }
-          })
-        }
-      })
+      });
+    }, 2000);
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

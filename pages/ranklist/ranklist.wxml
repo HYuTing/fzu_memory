@@ -1,0 +1,87 @@
+<!--pages/rankinglist/rankinglist.wxml-->
+<view>
+  <navBar navbarTitle = '详情' navbarColor = '#303030'/>
+  <view class="main" style='margin-top: {{marginTop*2}}rpx;'>
+
+    <view class="price">
+      <view class='masking' id="{{firstId}}" bindtap='toDetail'></view>
+      <view class="label">
+        <view class="tri1" id="first-tri"></view>
+        <view class="tri2"></view>
+      </view>
+      <view class="imgs">
+        <view class="img1"><image class="text-img" src="{{firstTextUrl}}"></image></view>
+      <view class="triangle"></view>
+      </view>      
+      <view class="price-main">
+        <image class="price-icon" src="../../img/1st.png"></image>
+        <image class="head-icon" src="{{firstHeadUrl}}"></image>
+        <text class="username">{{firstusrName}}</text>
+        <view class="likes">
+          <text class="like-nums">{{firstlikeNums}}</text>
+          <image class="like-icon" src="../../img/like4.png"></image>
+        </view>
+      </view>    
+    </view>
+
+    <view class="price">
+      <view class='masking' id="{{secondId}}" bindtap='toDetail'></view>
+      <view class="label" >
+        <view class="tri1" id="second-tri"></view>
+        <view class="tri2"></view>
+      </view>
+      <view class="imgs">
+        <view class="img1"><image class="text-img" src="{{secondTextUrl}}" ></image></view>
+      <view class="triangle"></view>
+      </view>      
+      <view class="price-main">
+        <image class="price-icon" src="../../img/2nd.png"></image>
+        <image class="head-icon" src="{{secondHeadUrl}}"></image>
+        <text class="username">{{secondusrName}}</text>
+        <view class="likes">
+          <text class="like-nums">{{secondlikeNums}}</text>
+          <image class="like-icon" src="../../img/like4.png"></image>
+        </view>
+      </view>    
+    </view>
+
+    <view class="price">
+      <view class='masking' id="{{thirdId}}" bindtap='toDetail'></view>
+      <view class="label">
+        <view class="tri1" id="third-tri"></view>
+        <view class="tri2"></view>
+      </view>
+      <view class="imgs">
+        <view class="img1"><image class="text-img" src="{{thirdTextUrl}}"></image></view>
+      <view class="triangle"></view>
+      </view>      
+      <view class="price-main">
+        <image class="price-icon" src="../../img/3rd.png"></image>
+        <image class="head-icon" src="{{thirdHeadUrl}}"></image>
+        <text class="username">{{thirdusrName}}</text>
+        <view class="likes">
+          <text class="like-nums">{{thirdlikeNums}}</text>
+          <image class="like-icon" src="../../img/like4.png"></image>
+        </view>
+      </view>    
+    </view>
+
+    <view class="price" wx:for="{{list}}" wx:key="{{list}}">
+      <!-- <view class='masking' id="{{item.id}}" bindtap='toDetail'></view> -->
+      <view class="imgs">
+        <view class="img1"><image class="text-img" src="{{item.imgUrl}}"></image></view>
+      <view class="triangle"></view>
+      </view>      
+      <view class="price-main">
+        <text class="rank-num1">{{item.rankNum}}</text>
+        <image class="head-icon" src="{{item.avatarUrl}}"></image>
+        <text class="username">{{item.nickName}}</text>
+        <view class="likes">
+          <text class="like-nums">{{item.praiseNum}}</text>
+          <image class="like-icon" src="../../img/like4.png"></image>
+        </view>
+      </view>    
+    </view>
+    
+  </view>
+</view>

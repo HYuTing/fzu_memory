@@ -41,10 +41,10 @@ Page({
     var that = this
     this.setData({
       marginTop: app.globalData.height + 10,
-      // timeId: options.id
+      timeId: options.id
     })
     wx.request({
-      url: app.globalData.URL + '/time/detail/' + 3985,
+      url: app.globalData.URL + '/time/detail/' + options.id,
       method: 'GET',
       header: {
         "S-TOKEN": wx.getStorageSync("userTOKEN")

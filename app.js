@@ -29,6 +29,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    URL: 'http://ipr9va.natappfree.cc'
+    URL: 'https://time.huanglexing.com'
   }
 })
