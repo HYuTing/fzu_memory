@@ -5,9 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    winHeight: '',
     currentTab: 1,
-    scrollLeft: 0,
+    tab0: [],
+    tab1: [],
+    tab2: []
   },
 
   /**
@@ -66,12 +67,39 @@ Page({
 
   },
 
-  swichNav: function (e) { 
+  swichNav0: function (e) { 
     var cur = e.target.dataset.current; 
     if (this.data.currentTaB == cur) { 
       return false; 
     } else { 
-      this.setData({ currentTab: cur }) 
+    wx.request({
+      url: '',
+      data: '',
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+    this.setData({ currentTab: cur }) 
     } 
+  },
+  swichNav1: function (e) {
+    var cur = e.target.dataset.current;
+    if (this.data.currentTaB == cur) {
+      return false;
+    } else {
+      this.setData({ currentTab: cur })
+    }
+  },
+  swichNav2: function (e) {
+    var cur = e.target.dataset.current;
+    if (this.data.currentTaB == cur) {
+      return false;
+    } else {
+      this.setData({ currentTab: cur })
+    }
   }
 })

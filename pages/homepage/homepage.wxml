@@ -12,9 +12,9 @@
     </view>
     <view class='record'>
       <view class='tab-container'>
-        <view class='tab'><text class="tab-name {{currentTab==0?'tab-chosed':''}}"  data-current="0" bindtap="swichNav">收藏</text></view>
-        <view class='tab'><text class="tab-name {{currentTab==1?'tab-chosed':''}}"  data-current="1" bindtap="swichNav">我的时光</text></view>
-        <view class='tab'><text class="tab-name {{currentTab==2?'tab-chosed':''}}"  data-current="2" bindtap="swichNav">其他</text></view>
+        <view class='tab'><text class="tab-name {{currentTab==0?'tab-chosed':''}}"  data-current="0" bindtap="swichNav0">收藏</text></view>
+        <view class='tab'><text class="tab-name {{currentTab==1?'tab-chosed':''}}"  data-current="1" bindtap="swichNav1">我的时光</text></view>
+        <view class='tab'><text class="tab-name {{currentTab==2?'tab-chosed':''}}"  data-current="2" bindtap="swichNav2">其他</text></view>
       </view>
 
       

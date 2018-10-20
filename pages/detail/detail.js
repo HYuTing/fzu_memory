@@ -1,6 +1,5 @@
 // pages/rankinglist/rankinglist.js
 const app = getApp()
-var util = require('../../utils/util.js')
 
 function timestampToTime(timestamp) {
   var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
@@ -26,20 +25,26 @@ Page({
     content: '',
     imgUrl: '',
     location: '',
-    praiseNum: ''
+    praiseNum: '',
+    like: 0,
+    isCollect: 0,
+    timeId: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
+    console.log(options);
+
     var that = this
     this.setData({
-      marginTop: app.globalData.height + 10
+      marginTop: app.globalData.height + 10,
+      // timeId: options.id
     })
     wx.request({
-      url: app.globalData.URL + '/time/explore',
+      url: app.globalData.URL + '/time/detail/' + 3985,
       method: 'GET',
       header: {
         "S-TOKEN": wx.getStorageSync("userTOKEN")
@@ -56,7 +61,10 @@ Page({
           content: res.data.data.content,
           imgUrl: 'http://' + res.data.data.imgUrl,
           location: res.data.data.location,
-          praiseNum: res.data.data.praiseNum
+          praiseNum: res.data.data.praiseNum,
+          like: res.data.data.isPraise,
+          isCollect: res.data.data.isCollect,
+          timeId: res.data.data.id
         })
       }
     })
@@ -101,30 +109,30 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('没有啦');
-    var that = this;
-    wx.request({
-      url: app.globalData.URL + '/time/explore',
-      method: 'GET',
-      header: {
-        "S-TOKEN": wx.getStorageSync("userTOKEN")
-      },
-      success: function (res) {
-        console.log(res)
-        var sjc = res.data.data.updateTime;
-        console.log(sjc);
-        sjc = timestampToTime(sjc);
+    // console.log('没有啦');
+    // var that = this;
+    // wx.request({
+    //   url: app.globalData.URL + '/time/explore',
+    //   method: 'GET',
+    //   header: {
+    //     "S-TOKEN": wx.getStorageSync("userTOKEN")
+    //   },
+    //   success: function (res) {
+    //     console.log(res)
+    //     var sjc = res.data.data.updateTime;
+    //     console.log(sjc);
+    //     sjc = timestampToTime(sjc);
 
-        that.setData({
-          nickName: res.data.data.nickName,
-          time: sjc,
-          content: res.data.data.content,
-          imgUrl: 'http://' + res.data.data.imgUrl,
-          location: res.data.data.location,
-          praiseNum: res.data.data.praiseNum
-        })
-      }
-    })
+    //     that.setData({
+    //       nickName: res.data.data.nickName,
+    //       time: sjc,
+    //       content: res.data.data.content,
+    //       imgUrl: 'http://' + res.data.data.imgUrl,
+    //       location: res.data.data.location,
+    //       praiseNum: res.data.data.praiseNum
+    //     })
+    //   }
+    // })
   },
 
   /**
@@ -134,5 +142,66 @@ Page({
 
   },
 
+  like: function() {
+    var praiseNum = this.data.praiseNum
+    if (praiseNum == 0) {
+      //表示没有点过赞
+      this.setData({
+        praiseNum: praiseNum+1,
+        like: 1
+      })
+    }
+    else {
+      this.setData({
+        praiseNum: praiseNum - 1,
+        like: 0
+      })
+    }
+
+    var thistimeid = this.data.timeId
+    wx.request({
+      url: app.globalData.URL + '/time/praise',
+      method: 'GET',
+      header: {
+        "S-TOKEN": wx.getStorageSync("userTOKEN")
+      },
+      data: {
+        timeId: thistimeid
+      },
+      success: function(res) {
+        console.log(res.data.text);
+      }
+    })
+  },
+
+  collect: function() {
+    var collect = this.data.isCollect
+    if (collect == 0) {
+      //表示没有收藏过
+      this.setData({
+        isCollect: 1
+      })
+    }
+    else {
+      this.setData({
+        isCollect: 0
+      })
+    }
+
+    var thistimeid = this.data.timeId
+    wx.request({
+      url: app.globalData.URL + '/time/collect',
+      method: 'GET',
+      header: {
+        "S-TOKEN": wx.getStorageSync("userTOKEN")
+      },
+      data: {
+        timeId: thistimeid
+      },
+      success: function (res) {
+        console.log(res.data.text);
+      }
+    })
+  }
 
 })
