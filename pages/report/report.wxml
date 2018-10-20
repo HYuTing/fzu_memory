@@ -1,6 +1,6 @@
 <!--components/report/report.wxml-->
 <view>
-  <navBar navbarTitle = '发表' navbarColor = '#D59893'/>
+  <navBar navbarTitle = '发表' navbarColor = 'transparent'/>
   <view class='main' style='margin-top: {{marginTop*2}}rpx;'>
     <textarea type='text'
     placeholder='编辑文本...'

@@ -1,0 +1,58 @@
+/* components/recordcard/recordcard.wxss */
+.time-record {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 520rpx;
+  margin-top: 16rpx;
+  padding: 50rpx;
+  padding-bottom: 46rpx;
+  background: #fff;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16rpx;
+}
+
+.userhead {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin-right: 26rpx;
+}
+
+.username {
+  position: absolute;
+  top: 3rpx;
+  font-size: 32rpx;
+}
+
+.reporttime {
+  position: absolute;
+  top: 55rpx;
+  font-size: 28rpx;
+  color: #C0C4CC;
+}
+
+.record-text {
+  font-size: 32rpx;
+}
+
+.record-img {
+  width: 85%;
+  margin-top: 15rpx;
+  margin-bottom: 20rpx;
+  border-radius: 6rpx;
+}
+
+.locationicon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-bottom: -6rpx;
+}
+
+.locationname {
+  font-size: 28rpx;
+  color: #C0C4CC;
+}

@@ -13,28 +13,26 @@ page {
 }
 
 .btns {
+  width: 130rpx;
   margin-top: 140rpx;
 }
 
 .iconbtn {
-  width: 46rpx;
-  height: 46rpx;
-  padding: 13rpx;
+  width: 90rpx;
+  height: 90rpx;
   margin: 40rpx;
-  border: 4rpx solid #fff;
-  border-radius: 50%;
-  box-shadow: 5rpx 5rpx 10rpx red;
 }
 
 .addbtn {
-  width: 180rpx;
-  height: 180rpx;
+  width: 190rpx;
+  height: 190rpx;
 }
 
 .addbtncontainer {
   position: absolute;
   bottom: 68rpx;
   right: 32rpx;
+  width: 180rpx;
 }
 
 .loginprompt {

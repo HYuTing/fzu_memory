@@ -3,15 +3,14 @@ function Person(id, latitude, longitude, name) {
   this.latitude = latitude;
   this.longitude = longitude;
   this.iconPath = '/img/location.png';
-  this.name = name;
 }
 
 var marks = new Array();
 var i;
 
-for (i = 1; i <= 10; i++) {
-  marks.push(new Person(i, 26.050 + i / 10, 119.1981 + i / 10, "张金铭"));
-}
+// for (i = 1; i <= 10; i++) {
+//   marks.push(new Person(i, 26.050 + i / 10, 119.1981 + i / 10));
+// }
 
 const app = getApp()
 
@@ -20,26 +19,15 @@ Page({
     loginflag: 0,
     latitude: 26.056,
     longitude: 119.1981,
-    markers: [{
-      id: 1,
-      latitude: 26.056,
-      longitude: 119.1981,
-      iconPath: '/img/location.png',
-      name: 'T.I.T 创意园'
-    },
-    {
-      id: 2,
-      latitude: 26.050,
-      longitude: 119.1981,
-      iconPath: '/img/location.png',
-      name: 'T.I.T 创意园'
-    }]
+    markers: [],
+    hasmarks: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     wx.getSetting({
       success: res => {
         console.log(res.authSetting);
@@ -61,10 +49,37 @@ Page({
                   success: function (res) {
                     console.log(res.data)
                     //console.log(res.header["S-TOKEN"])
+                    var tokennew;
+
                     wx.setStorage({
                       key: 'userTOKEN',
                       data: res.header["S-TOKEN"],
                     })
+
+                    tokennew = res.header["S-TOKEN"];
+
+                    wx.request({
+                      url: app.globalData.URL + '/time/map',
+                      method: 'GET',
+                      header: {
+                        "S-TOKEN": '' + tokennew
+                      },
+                      success: r2 => {
+                        var marksdata = r2.data.data;
+                        for (i = 0; i < marksdata.length; i++) {
+                          marksdata[i].iconPath = '/img/location.png';
+                          //marks.push(obj);
+                        }
+                        that.setData({
+                          markers: marksdata,
+                          hasmarks: true
+                        })
+                        console.log(that.data.markers)
+                        console.log('hlxsz' + that.data.hasmarks)
+
+                      }
+                    })
+
                   },
                   fail: function (res) {
                     console.log(res.data.text)
@@ -76,6 +91,7 @@ Page({
         }
       }
     })
+
   },
 
   /**
@@ -95,6 +111,12 @@ Page({
     })
   },
   
+  tohomepage: function() {
+    wx.navigateTo({
+      url: '../homepage/homepage',
+    })
+  },
+
   toReport: function() {
     wx.navigateTo({
       url: '../report/report',
@@ -140,8 +162,7 @@ Page({
             success: res => {
               this.setData({
                 latitude: res.latitude,
-                longitude: res.longitude,
-                markers: marks
+                longitude: res.longitude
               })
               // console.log(that.data.markers);
             },

@@ -1,6 +1,7 @@
 /* pages/homepage/homepage.wxss */
 page {
-  background: #f3f3f3;
+  background: #f7f7f7;
+  color: #303133;
 }
 
 .user-info {
@@ -15,17 +16,18 @@ page {
 
 .user-head-container {
   position: absolute;
-  top: 220rpx;
+  top: 200rpx;
   left: 0;
   right: 0;
   width: 200rpx;
   margin: auto;
+  font-size: 36rpx;
   color: #fff;
 }
 
 .user-head {
-  width: 120rpx;
-  height: 120rpx;
+  width: 140rpx;
+  height: 140rpx;
   margin-bottom: 16rpx;
   border-radius: 50%;
   border: 2px solid #fff;
@@ -43,12 +45,27 @@ page {
 
 .tab-container {
   display: flex;
-  padding: 8rpx 0;
+  padding: 14rpx 0;
+  margin-top: -10rpx;
   font-size: 32rpx;
   background: #fff;
+  box-shadow: 5rpx 0 10rpx #f1f1f1;
 }
 
 .tab {
   flex: 1;
   text-align: center;
+}
+
+.tab-chosed {
+  padding-bottom: 12rpx;
+  color: #D59893;
+  border-bottom: 4rpx solid #D59893;
+}
+
+.time-record {
+  width: 100%;
+  min-height: 420rpx;
+  margin-top: 16rpx;
+  background: #fff;
 }

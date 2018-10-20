@@ -1,7 +1,7 @@
 <!--components/detail/detail.wxml-->
 <view>
   <!--<image src='../../img/back2.png' class='reback'></image>-->
-  <navBar navbarTitle = '详情' navbarColor = '#D59893'/>
+  <navBar navbarTitle = '详情' navbarColor = 'transparent'/>
   <view class='main' style='margin-top: {{marginTop*2}}rpx;'>
     <view class='userInfo'>
       <image src='../../img/user_head.png' class='userHeader'></image>

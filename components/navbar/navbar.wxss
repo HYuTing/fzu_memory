@@ -21,6 +21,6 @@
   position: absolute;
   bottom: 25rpx;
   left: 30rpx;
-  width: 50rpx;
-  height: 50rpx;
+  width: 42rpx;
+  height: 42rpx;
 }

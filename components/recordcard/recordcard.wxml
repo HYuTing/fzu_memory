@@ -1,0 +1,14 @@
+<!--components/recordcard/recordcard.wxml-->
+<view class='time-record'>
+  <view class='header'>
+    <image src='../../img/user_head.png' class='userhead'></image>
+    <text class='username'>JENSEN</text>
+    <text class='reporttime'>12:00</text>
+  </view>
+  <text class='record-text'>Nice game in FZU</text>
+  <image src='../../img/user_head.png' class='record-img' mode="widthFix"></image>
+  <view class='footer'>
+    <image src='../../img/locationicon.png' class='locationicon'></image>
+    <text class='locationname'>福州大学</text>
+  </view>
+</view>
