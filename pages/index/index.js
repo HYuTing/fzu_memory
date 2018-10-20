@@ -82,7 +82,7 @@ Page({
 
                   },
                   fail: function (res) {
-                    console.log(res.data.text)
+                    console.log('登录失败')
                   }
                 })
               }
@@ -107,7 +107,7 @@ Page({
 
   changeName: function() {
     wx.navigateTo({
-      url: '../demo/index',
+      url: '../detail/detail',
     })
   },
   

@@ -12,15 +12,25 @@
     </view>
     <view class='record'>
       <view class='tab-container'>
-        <view class='tab'><text class='tab-name tab-chosed'>收藏</text></view>
-        <view class='tab'><text class='tab-name'>我的时光</text></view>
-        <view class='tab'><text class='tab-name'>其他</text></view>
+        <view class='tab'><text class="tab-name {{currentTab==0?'tab-chosed':''}}"  data-current="0" bindtap="swichNav">收藏</text></view>
+        <view class='tab'><text class="tab-name {{currentTab==1?'tab-chosed':''}}"  data-current="1" bindtap="swichNav">我的时光</text></view>
+        <view class='tab'><text class="tab-name {{currentTab==2?'tab-chosed':''}}"  data-current="2" bindtap="swichNav">其他</text></view>
       </view>
 
-      <view class='record-list'>
+      
+      <view class='record-list' wx:if='{{currentTab == 0}}' >
         <recordCard />
         <recordCard />
       </view>
+      <view class='record-list' wx:if='{{currentTab == 1}}' >
+        <recordCard />
+        <recordCard />
+        <recordCard />
+      </view>
+      <view class='record-list' wx:if='{{currentTab == 2}}' >
+        <recordCard />
+      </view>
+
     </view>
   </view>
 </view>

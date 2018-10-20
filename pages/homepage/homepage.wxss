@@ -57,7 +57,12 @@ page {
   text-align: center;
 }
 
+  .tab-name {
+    padding: 10rpx 20rpx;
+  }
+
 .tab-chosed {
+  padding: 0;
   padding-bottom: 12rpx;
   color: #D59893;
   border-bottom: 4rpx solid #D59893;

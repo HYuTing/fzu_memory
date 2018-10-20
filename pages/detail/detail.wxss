@@ -1,6 +1,11 @@
 /* components/detail/detail.wxss */
 page {
   padding-bottom: 10rpx;
+  height: 89%;
+}
+
+.back {
+  height: 100%;
 }
 
 .main {

@@ -5,14 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    winHeight: '',
+    currentTab: 1,
+    scrollLeft: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -62,5 +64,14 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  swichNav: function (e) { 
+    var cur = e.target.dataset.current; 
+    if (this.data.currentTaB == cur) { 
+      return false; 
+    } else { 
+      this.setData({ currentTab: cur }) 
+    } 
   }
 })

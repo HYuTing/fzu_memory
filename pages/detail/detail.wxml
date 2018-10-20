@@ -1,7 +1,7 @@
 <!--components/detail/detail.wxml-->
-<view>
+<view class='back'>
   <!--<image src='../../img/back2.png' class='reback'></image>-->
-  <navBar navbarTitle = '详情' navbarColor = 'transparent'/>
+  <navBar navbarTitle = '详情' navbarColor = '#303030'/>
   <view class='main' style='margin-top: {{marginTop*2}}rpx;'>
     <view class='userInfo'>
       <image src='../../img/user_head.png' class='userHeader'></image>
@@ -24,14 +24,14 @@
         {{location}}
       </view>
       <view class='iconbtns'>
-        <image src='../../img/like2.png' class='iconbtn'></image>
+        <image src='../../img/like1.png' class='iconbtn'></image>
         <text class="like-num">{{praiseNum}}</text>
         <image src='../../img/share.png' class='iconbtn'></image>
          <text class="share-num"></text>     
         <!--<image src='../../img/start.png' class='iconbtn'></image>-->
       </view>
     </view>
-    <view class="underline"></view>
+    <!-- <view class="underline"></view>
     <view class='commentContainer'>
       <view class='comments'>      
         <text class="comment1" id="usrcmt-name">Michead</text>
@@ -49,6 +49,6 @@
         <text class="comment2">下次记得叫上我</text>
       </view>
       <input placeholder='点击进行评论' placeholder-class="placeholderstyle"></input> 
-    </view>
+    </view> -->
   </view>
 </view>

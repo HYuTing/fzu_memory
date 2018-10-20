@@ -24,15 +24,15 @@ page {
 }
 
 .addbtn {
-  width: 190rpx;
-  height: 190rpx;
+  width: 200rpx;
+  height: 200rpx;
 }
 
 .addbtncontainer {
   position: absolute;
   bottom: 68rpx;
   right: 32rpx;
-  width: 180rpx;
+  width: 190rpx;
 }
 
 .loginprompt {

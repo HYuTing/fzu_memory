@@ -7,8 +7,7 @@
       longitude="{{longitude}}"
       markers="{{markers}}"
       subkey="GBZBZ-JGAH2-OSWUF-CPPZN-YRDVZ-U7BR3"
-      show-location="true"
-      wx:if="{{hasmarks}}" >
+      show-location="true">
       <cover-view class='loginprompt' wx:if="{{loginflag == 0}}">
         <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='loginbtn'> 开启 </button>
       </cover-view>

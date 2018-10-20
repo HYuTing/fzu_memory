@@ -29,6 +29,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    URL: 'http://pybk6q.natappfree.cc'
+    URL: 'http://time.huanglexing.com'
   }
 })
