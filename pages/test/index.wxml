@@ -1,36 +1,34 @@
-<view>
-  <navBar navbarTitle = '详情' navbarColor = '#303030'/>
-  <view class="main" style='margin-top: {{marginTop*2}}rpx;'>
-    <view class="xin-list" bindtouchend="moveItem" bindtouchstart="moveStart">
-      <block wx:for="{{xinList}}" wx:key="key">
-        <view class="single" style="opacity:{{item.display}};transform: translateX({{item.slateX}}) scale({{item.scale}});z-index:{{item.zIndex}};transform-origin: 100% 50% 0;{{item.style}}">
-          <view class='detailmain'>
-            <view class='userInfo'>
-              <image src='{{item.avatarUrl}}' class='userHeader'></image>
-              <view class='uesrName'>{{item.nickName}}</view>
-              <image class="star" src="../../img/selection3.png" bindtap='collect'></image>
-              <text class='new-time'>{{item.time}}</text>
-            </view>
-            
-            <view class="main-content" >
-              <view class='textContainer'>
-                <text class='texts'>{{item.content}}</text>
-                <image src='{{item.imgUrl}}' class='textImg' mode="widthFix"></image>
-              </view>
-              <view class='locadInfo'>
-                <image src='../../img/locationicon.png' class='locadicon'></image>
-                {{item.location}}
-              </view>
-              <view class='iconbtns'>
-                <image src='../../img/like{{item.isPraise+3}}.png' class='iconbtn' bindtap='like'></image>
-                <text class="like-num">{{item.praiseNum}}</text>
-                <image src='../../img/share.png' class='iconbtn'></image>
-                <text class="share-num"></text>     
-              </view>
-            </view>
-          </view>
-        </view>
-      </block>
+<!--components/detail/detail.wxml-->
+<view class='back'>
+  <!--<image src='../../img/back2.png' class='reback'></image>-->
+  <navBar navbarTitle = '详情' navbarColor = '#D59893'/>
+  <view class='main' style='margin-top: {{marginTop*2}}rpx;'>
+    <view class='nextbtn'>
+      <image src='../../img/newtime.png' class='newtiem' mode="widthFix" bindtap='random'></image>
+    </view>
+    <view class='userInfo'>
+      <image src='{{avatarUrl}}' class='userHeader'></image>
+      <view class='uesrName'>{{nickName}}</view>
+      <image class="star" src="../../img/selection{{isCollect+3}}.png" bindtap='collect'></image>
+      <text class='new-time'>{{time}}</text>
+    </view>
+    
+    <view class="main-content" >
+      <view class='textContainer'>
+        <view class='texts'>{{content}}</view>
+        <image src='{{imgUrl}}' class='textImg' mode="widthFix"></image>
+      </view>
+      <view class='locadInfo'>
+        <image src='../../img/locationicon.png' class='locadicon'></image>
+        {{location}}
+      </view>
+      <view class='iconbtns'>
+        <image src='../../img/like{{like+3}}.png' class='iconbtn' bindtap='like'></image>
+        <text class="like-num">{{praiseNum}}</text>
+        <image src='../../img/share.png' class='iconbtn' bindtap="share"></image>
+        <text class="share-num"></text>     
+        <!--<image src='../../img/start.png' class='iconbtn'></image>-->
+      </view>
     </view>
   </view>
 </view>

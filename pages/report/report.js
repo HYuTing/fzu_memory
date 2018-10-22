@@ -7,13 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hasPic:false,
     marginTop: '',
     content: '',
     src: '../../img/add.png',
     longitude: '',
     latitude: '',
     positionInfo: '',
-    stoken: ''
+    stoken: '',
+    timeId: ''
   },
 
   /**
@@ -103,22 +105,44 @@ Page({
       success: function(res) {
         // console.log(res);
         that.setData({
-          src: res.tempFilePaths
+          src: res.tempFilePaths,
+          hasPic: true
         })
       },
     })
   },
 
   updateContent: function(e) {
+    console.log(e.detail.value.length);
+    if (this.data.content.length > 140) {
+      wx.showToast({
+        title: '超出最大字数140',
+        icon: "none"
+      });
+    }
     this.setData({
       content: e.detail.value
     })
   },
   
   report: function() {
-    var that = this
-
+    var that = this;
+    if (that.data.content.length == 0) {
+      wx.showToast({
+        title: '请加点文字',
+        icon: "none"
+      });
+      return;
+    }
+    if (!that.data.hasPic) {
+      wx.showToast({
+        title: '请上传一张图片',
+        icon: "none"
+      });
+      return;
+    }
     wx.request({
+
       url: app.globalData.URL + '/time/upload',
       method: 'POST',
       header: {
@@ -129,9 +153,13 @@ Page({
         content: that.data.content,
         latitude: that.data.latitude,
         longitude: that.data.longitude,
-        location: that.data.positionInfo
+        location: that.data.positionInfo,
       },
       success: res => {
+        that.setData({
+          timeId: res.data.data.id
+        })
+
         //console.log(res.data);
         wx.uploadFile({
           url: 'http://up-z2.qiniup.com',
@@ -145,9 +173,10 @@ Page({
             'token': res.data.data.uploadToken
           },
           success: function (r) {
-            console.log(res.data),
-            console.log(res.data.data.key),
-            console.log(res.data.data.uploadToken)
+            console.log(res.data);
+            console.log(res.data.data.key);
+            console.log(res.data.data.uploadToken);
+            
           },
           fail: function() {
             console.log('上传失败')
@@ -158,17 +187,25 @@ Page({
         wx.showModal({
           title: '分享',
           content: '是否将您的福大记忆分享到朋友圈',
-          success: function(res) {
-            if(res.confirm) {
+          success: function(resourse) {
+            if (resourse.confirm) {
+
               // 用户同意分享至朋友圈
+              var that = this;
+              console.log(res.data.data.id);
+              var ids = res.data.data.id;
               wx.navigateTo({
-                url: '../share/share',
+                url: '../share/share?id=' + ids
               })
             }
             else {
               wx.showToast({
                 title: '发表成功',
                 icon: "success"
+              });
+              var ids = res.data.data.id;
+              wx.navigateTo({
+                url: '../detail/detail?id=' + ids
               })
             }
           }

@@ -6,7 +6,7 @@
   font-size: 36rpx;
   color: rgb(255, 255, 255);
   z-index: 999;
-  /* background: #D59893; */
+  background: #D59893;
 }
 
 .nav-title {
@@ -23,4 +23,13 @@
   left: 30rpx;
   width: 42rpx;
   height: 42rpx;
+}
+
+.virtual {
+  position: absolute;
+  bottom: 25rpx;
+  left: 30rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
 }

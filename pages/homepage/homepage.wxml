@@ -1,31 +1,28 @@
 <!--pages/homepage/homepage.wxml-->
 <view>
   <navBar navbarTitle = '个人主页' navbarColor = 'transparent'/>
-  <view class='main'>
+  <view class='main' >
     <view class='user-info'>
       <image src='../../img/user_head.png' class='back-img'></image>
       <view class='user-head-container'>  
-        <image src='../../img/test.jpg' class='user-head'></image>
-        <text>Croll__</text>
-        <view class='edit-btn'>编辑</view>
+        <image src='{{myHead}}' class='user-head'></image>
+        <text>{{myName}}</text>
+        <!--<view class='edit-btn'>编辑</view>-->
       </view>
     </view>
     <view class='record'>
       <view class='tab-container'>
-        <view class='tab'><text class="tab-name {{currentTab==0?'tab-chosed':''}}"  data-current="0" bindtap="swichNav0">收藏</text></view>
-        <view class='tab'><text class="tab-name {{currentTab==1?'tab-chosed':''}}"  data-current="1" bindtap="swichNav1">我的时光</text></view>
-        <view class='tab'><text class="tab-name {{currentTab==2?'tab-chosed':''}}"  data-current="2" bindtap="swichNav2">其他</text></view>
+        <view class='tab'><text class="tab-name {{currentTab==0?'tab-chosed':''}}"  data-current="0" bindtap="swichNav">收藏</text></view>
+        <view class='tab'><text class="tab-name {{currentTab==1?'tab-chosed':''}}"  data-current="1" bindtap="swichNav">我的时光</text></view>
+        <view class='tab'><text class="tab-name {{currentTab==2?'tab-chosed':''}}"  data-current="2" bindtap="swichNav">其他</text></view>
       </view>
 
       
-      <view class='record-list' wx:if='{{currentTab == 0}}' >
-        <recordCard />
-        <recordCard />
+      <view class='record-list' wx:if='{{currentTab == 0}}' bindup="myStar" >
+        <recordCard wx:for="{{list}}" wx:key="{{list}}" id="{{item.id}}"  avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}" imgUrl="{{item.imgUrl}}" bindtap='toDetail' />
       </view>
-      <view class='record-list' wx:if='{{currentTab == 1}}' >
-        <recordCard />
-        <recordCard />
-        <recordCard />
+      <view class='record-list' wx:if='{{currentTab == 1}}' bindup="myTime" >
+        <recordCard   wx:for="{{list}}" wx:key="{{list}}" id="{{item.id}}"  avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}" imgUrl="{{item.imgUrl}}" bindtap='toDetail' />
       </view>
       <view class='record-list' wx:if='{{currentTab == 2}}' >
         <recordCard />

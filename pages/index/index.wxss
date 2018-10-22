@@ -24,8 +24,8 @@ page {
 }
 
 .addbtn {
-  width: 200rpx;
-  height: 200rpx;
+  width: 190rpx;
+  height: 190rpx;
 }
 
 .addbtncontainer {

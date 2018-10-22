@@ -1,10 +1,10 @@
 <!--components/detail/detail.wxml-->
 <view class='back'>
   <!--<image src='../../img/back2.png' class='reback'></image>-->
-  <navBar navbarTitle = '详情' navbarColor = '#303030'/>
+  <navBar navbarTitle = '详情' navbarColor = '#D59893'/>
   <view class='main' style='margin-top: {{marginTop*2}}rpx;'>
     <view class='userInfo'>
-      <image src='../../img/user_head.png' class='userHeader'></image>
+      <image src='{{avatarUrl}}' class='userHeader'></image>
       <view class='uesrName'>{{nickName}}</view>
       <image class="star" src="../../img/selection{{isCollect+3}}.png" bindtap='collect'></image>
       <text class='new-time'>{{time}}</text>
@@ -16,7 +16,7 @@
     
     <view class="main-content" >
       <view class='textContainer'>
-        <text class='texts'>{{content}}</text>
+        <view class='texts'>{{content}}</view>
         <image src='{{imgUrl}}' class='textImg' mode="widthFix"></image>
       </view>
       <view class='locadInfo'>
@@ -26,7 +26,7 @@
       <view class='iconbtns'>
         <image src='../../img/like{{like+3}}.png' class='iconbtn' bindtap='like'></image>
         <text class="like-num">{{praiseNum}}</text>
-        <image src='../../img/share.png' class='iconbtn'></image>
+        <image src='../../img/share.png' class='iconbtn' bindtap="share"></image>
          <text class="share-num"></text>     
         <!--<image src='../../img/start.png' class='iconbtn'></image>-->
       </view>

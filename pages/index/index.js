@@ -149,10 +149,14 @@ Page({
                   ivStr: res.iv
                 },
                 success: function (res) {
-                  console.log(res.data.text)
+                  wx.setStorage({
+                    key: 'userTOKEN',
+                    data: res.header["S-TOKEN"],
+                  })
+                  console.log(res)
                 },
                 fail: function (res) {
-                  console.log(res.data.text)
+                  console.log('请求失败')
                 }
               })
             },

@@ -59,14 +59,23 @@ Page({
           nickName: res.data.data.nickName,
           time: sjc,
           content: res.data.data.content,
-          imgUrl: 'http://' + res.data.data.imgUrl,
+          imgUrl: res.data.data.imgUrl,
           location: res.data.data.location,
           praiseNum: res.data.data.praiseNum,
           like: res.data.data.isPraise,
           isCollect: res.data.data.isCollect,
-          timeId: res.data.data.id
-        })
+          timeId: res.data.data.id,
+          avatarUrl: res.data.data.avatarUrl
+        });
+
       }
+    })
+  },
+  share: function(e) {
+    var that = this;
+    var ids = that.data.timeId;
+    wx.navigateTo({
+      url: '../share/share?id=' + ids
     })
   },
 

@@ -7,17 +7,18 @@
       longitude="{{longitude}}"
       markers="{{markers}}"
       subkey="GBZBZ-JGAH2-OSWUF-CPPZN-YRDVZ-U7BR3"
-      show-location="true">
+      show-location="true"
+      wx:if="{{hasmarks}}">
       <cover-view class='loginprompt' wx:if="{{loginflag == 0}}">
         <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='loginbtn'> 开启 </button>
       </cover-view>
       <cover-view class="btns" wx:if="{{loginflag == 1}}">
-        <cover-image src="../../img/people1.png" class="iconbtn" bindtap="tohomepage"></cover-image>
-        <cover-image src="../../img/like1.png" class="iconbtn" bindtap="changeName"></cover-image>
-        <cover-image src="../../img/selection1.png" class="iconbtn" bindtap="toranklist"></cover-image>
+        <cover-image src="../../img/people.png" class="iconbtn" bindtap="tohomepage"></cover-image>
+        <cover-image src="../../img/like.png" class="iconbtn" bindtap="changeName"></cover-image>
+        <cover-image src="../../img/selection.png" class="iconbtn" bindtap="toranklist"></cover-image>
       </cover-view>
       <cover-view class="btns addbtncontainer" wx:if="{{loginflag == 1}}">
-        <cover-image src="../../img/round_add_fill.png" class="addbtn" bindtap="toReport"></cover-image>
+        <cover-image src="../../img/round_add_fill1.png" class="addbtn" bindtap="toReport"></cover-image>
       </cover-view>
 
       <!-- <cover-view class='scroll-box' wx:if="{{loginflag == 1}}">

@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/test/index",
-    "pages/test1/index",
-    "pages/detail/detail",
-    "pages/homepage/homepage",
     "pages/report/report",
+    "pages/homepage/homepage",
+    "pages/test/index",
+    "pages/detail/detail",   
+    
     "pages/share/share",
     "pages/ranklist/ranklist",
     "pages/demo/index",

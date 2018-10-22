@@ -1,4 +1,5 @@
 //share.js
+const app = getApp()
 Page({
   data: {
     imageBg: "../../img/test.jpg",//背景图片
@@ -9,10 +10,32 @@ Page({
     maskHidden: false,
   },
   onLoad: function (options) {
+    var that = this;
+    //console.log(options);
+    var timeId = options.id;
+    console.log(timeId)
+    wx.request({
+      url: app.globalData.URL + '/time/detail/' + timeId,
+      method: 'GET',
+      header: {
+        "S-TOKEN": wx.getStorageSync("userTOKEN")
+      },
+      success: function(res) {
+        console.log(res);
+        that.setData({
+          imageBg: res.data.data.imgUrl,
+          imageHead: res.data.data.avatarUrl,
+          username: res.data.data.nickName
+        })
+        console.log('='+that.data.username);
+        var size = that.setCanvasSize();//动态设置画布大小
+        that.createNewImg();
+          
+      }
+    });
     // 页面初始化 options为页面跳转所带来的参数
-    var size = this.setCanvasSize();//动态设置画布大小
-    console.log(size);
-    this.createNewImg();
+    
+    
     //this.downloadImages();
     //创建初始化图片
   },
@@ -172,10 +195,10 @@ context.textBaseline = baseline;
     var imageHead = that.data.imageHead;
     var imageEwm = that.data.imageEwm;
     var imageZw = that.data.imageBg;
-    console.log(imageEwm);
     var imageWrite = "../../img/write.png";
     var name = that.data.username;
     var texts = that.data.text;
+    console.log(that.data.username);
     //context.drawImage(path, 0, 0, size.w, size.h);
     context.setFillStyle('#ffffff');
     context.fillRect(0, 0, size.w, size.h);
@@ -187,7 +210,6 @@ context.textBaseline = baseline;
     this.lastText(context, "发布了一段新时光", size.w * 0.58, size.h * 0.20);
     this.lastText(context, "长按扫码查看详情吧", size.w * 0.64, size.h * 0.20);
     //this.lastText(context);
-    console.log(size.w, size.h)
     context.drawImage(imageEwm, size.w * 0.080, size.h * 0.41, size.w * 0.26, size.w * 0.26);
     context.drawImage(imageWrite, size.w * 0.54, size.h * 0.09, size.w * 0.08, size.w * 0.08);
     context.draw();

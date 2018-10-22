@@ -1,14 +1,11 @@
 <!--components/recordcard/recordcard.wxml-->
-<view class='time-record'>
+<view class='time-record' id="{{id}}">
   <view class='header'>
-    <image src='../../img/user_head.png' class='userhead'></image>
-    <text class='username'>JENSEN</text>
-    <text class='reporttime'>12:00</text>
+    <image src='{{avatarUrl}}' class='userhead' bindtap='delete'></image>
+    <text class='username'>{{nickName}}</text>
+    <text class='reporttime'>{{updateTime}}</text>
+    <!--<image class="delete" src="../../img/delete.png" wx:if = '{{condition}}'></image>-->    
   </view>
-  <text class='record-text'>Nice game in FZU</text>
-  <image src='../../img/user_head.png' class='record-img' mode="widthFix"></image>
-  <view class='footer'>
-    <image src='../../img/locationicon.png' class='locationicon'></image>
-    <text class='locationname'>福州大学</text>
-  </view>
+  <text class='record-text'>{{content}}</text>
+  <image src='{{imgUrl}}' class='record-img' mode="widthFix"  ></image>
 </view>

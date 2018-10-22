@@ -1,6 +1,6 @@
 <!--pages/rankinglist/rankinglist.wxml-->
 <view>
-  <navBar navbarTitle = '详情' navbarColor = '#303030'/>
+  <navBar navbarTitle = '详情' navbarColor = '#D59893'/>
   <view class="main" style='margin-top: {{marginTop*2}}rpx;'>
 
     <view class="price">
