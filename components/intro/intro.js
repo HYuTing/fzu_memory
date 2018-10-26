@@ -39,7 +39,10 @@ Component({
                     ivStr: res.iv
                   },
                   success: function (res) {
-                    console.log(res.data)
+                    wx.setStorage({
+                      key: 'userTOKEN',
+                      data: res.header["S-TOKEN"],
+                    })
                   },
                   fail: function () {
                     console.log('调用微信请求接口失败')

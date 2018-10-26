@@ -7,13 +7,17 @@ Page({
     imageEwm: "../../img/logo.jpg",//二维码
     username: "Loutloi",//用户名
     text: "Now is 2:00am, it's time to sleep!",//文字说明
-    maskHidden: false,
+    ids: ""
+    
   },
   onLoad: function (options) {
     var that = this;
     //console.log(options);
     var timeId = options.id;
     console.log(timeId)
+    that.setData({
+      ids: options.id
+    });
     wx.request({
       url: app.globalData.URL + '/time/detail/' + timeId,
       method: 'GET',
@@ -33,14 +37,36 @@ Page({
           
       }
     });
-    // 页面初始化 options为页面跳转所带来的参数
-    
-    
-    //this.downloadImages();
-    //创建初始化图片
   },
-  //适配不同屏幕大小的canvas    生成的分享图宽高分别是 750  和940，老实讲不知道这块到底需不需要，然而。。还是放了，因为不写这块的话，模拟器上的图片大小是不对的。。。
+    // 页面初始化 options为页面跳转所带来的参数
 
+  save: function() {
+    var that = this;
+    var img = that.data.imagePath;
+    wx.downloadFile({
+      url: img,
+      success: function (res) {
+        console.log(res)
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success: function (res) {
+            console.log(res)
+            wx.navigateTo({
+              url: '../detail/detail?id=' + that.data.ids
+            });
+          },
+          fail: function (res) {
+            console.log(res)
+            console.log('fail')
+          }
+        })
+      },
+      fail: function () {
+        console.log('fail')
+      }
+    })
+    
+  },
   setCanvasSize: function () {
     var size = {};
     try {
@@ -95,7 +121,7 @@ Page({
     console.log(avatarurl_y);
     //先画个圆   前两个参数确定了圆心 （x,y） 坐标  第三个参数是圆的半径  四参数是绘图方向  默认是false，即顺时针
     contex.arc(avatarurl_width / 2 + avatarurl_x, avatarurl_heigth / 2 + avatarurl_y, avatarurl_width / 2, 0, Math.PI * 2, false);
-    contex.clip();//画好了圆 剪切  原始画布中剪切任意形状和尺寸。
+    contex.clip();//剪切
     contex.drawImage(img, avatarurl_x, avatarurl_y, avatarurl_width, avatarurl_heigth); // 推进去图片
     contex.restore(); //恢复之前保存的绘图上下文
   },
@@ -227,35 +253,16 @@ context.textBaseline = baseline;
           console.log(tempFilePath);
           that.setData({
             imagePath: tempFilePath,
-            canvasHidden: false,
-            maskHidden: true,
+            //canvasHidden: false,
+            //maskHidden: true,
           });
           //将生成的图片放入到《image》标签里
-          var img = that.data.imagePath;
-          wx.previewImage({
+          
+          /*wx.previewImage({
             current: img, // 当前显示图片的http链接
             urls: [img] // 需要预览的图片http链接列表
-          })
-          /*wx.downloadFile({
-            url: img,
-            success: function (res) {
-              console.log(res)
-              wx.saveImageToPhotosAlbum({
-                filePath: res.tempFilePath,
-                success: function (res) {
-                  console.log(res)
-                },
-                fail: function (res) {
-                  console.log(res)
-                  console.log('fail')
-                }
-              })
-            },
-            fail: function () {
-              console.log('fail')
-            }
           })*/
-
+      
         },
         fail: function (res) {
           console.log(res);

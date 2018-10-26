@@ -18,7 +18,7 @@
 
       <cover-view class="btns" wx:if="{{loginflag == 1}}">
         <cover-image src="../../img/people.png" class="iconbtn" bindtap="tohomepage"></cover-image>
-        <cover-image src="../../img/like.png" class="iconbtn" bindtap="changeName"></cover-image>
+        <cover-image src="../../img/like.png" class="iconbtn" bindtap="torandom"></cover-image>
         <cover-image src="../../img/selection.png" class="iconbtn" bindtap="toranklist"></cover-image>
       </cover-view>
 

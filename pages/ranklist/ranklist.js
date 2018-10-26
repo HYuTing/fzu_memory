@@ -82,7 +82,7 @@ Page({
       url: app.globalData.URL + '/time/rank',
       method: 'GET',
       header: {
-        "S-TOKEN": "098eadbb-2203-483d-85a2-b3e67f7c73c1" //wx.getStorageSync("userTOKEN")
+        "S-TOKEN": wx.getStorageSync("userTOKEN")
       },
       success: function (res) {
         that.data.list = [];

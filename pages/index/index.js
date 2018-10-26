@@ -79,6 +79,12 @@ Page({
     })
   },
 
+  torandom: function() {
+    wx.navigateTo({
+      url: '../test/test',
+    })
+  },
+
   toranklist: function () {
     wx.navigateTo({
       url: '../ranklist/ranklist',

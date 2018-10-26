@@ -21,14 +21,15 @@ Page({
   data: {
     marginTop: '',
     nickName: '',
-    time:'',
+    time: '',
     content: '',
     imgUrl: '',
     location: '',
     praiseNum: '',
     like: 0,
     isCollect: 0,
-    timeId: ''
+    timeId: '',
+    avatarUrl: ''
   },
 
   /**
@@ -41,21 +42,22 @@ Page({
     var that = this
     this.setData({
       marginTop: app.globalData.height + 10,
-      timeId: options.id
+      //timeId: options.id
     })
     wx.request({
-      url: app.globalData.URL + '/time/detail/' + options.id,
+      url: app.globalData.URL + '/time/explore',
       method: 'GET',
       header: {
         "S-TOKEN": wx.getStorageSync("userTOKEN")
       },
-      success: function(res) {
+      success: function (res) {
         console.log(res)
         var sjc = res.data.data.updateTime;
         console.log(sjc);
         sjc = timestampToTime(sjc);
 
         that.setData({
+          avatarUrl: res.data.data.avatarUrl,
           nickName: res.data.data.nickName,
           time: sjc,
           content: res.data.data.content,
@@ -64,14 +66,14 @@ Page({
           praiseNum: res.data.data.praiseNum,
           like: res.data.data.isPraise,
           isCollect: res.data.data.isCollect,
-          timeId: res.data.data.id,
-          avatarUrl: res.data.data.avatarUrl
+          timeId: res.data.data.id
+
         });
 
       }
     })
   },
-  share: function(e) {
+  share: function (e) {
     var that = this;
     var ids = that.data.timeId;
     wx.navigateTo({
@@ -111,37 +113,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log('还有啦');  
+    console.log('还有啦');
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    // console.log('没有啦');
-    // var that = this;
-    // wx.request({
-    //   url: app.globalData.URL + '/time/explore',
-    //   method: 'GET',
-    //   header: {
-    //     "S-TOKEN": wx.getStorageSync("userTOKEN")
-    //   },
-    //   success: function (res) {
-    //     console.log(res)
-    //     var sjc = res.data.data.updateTime;
-    //     console.log(sjc);
-    //     sjc = timestampToTime(sjc);
 
-    //     that.setData({
-    //       nickName: res.data.data.nickName,
-    //       time: sjc,
-    //       content: res.data.data.content,
-    //       imgUrl: 'http://' + res.data.data.imgUrl,
-    //       location: res.data.data.location,
-    //       praiseNum: res.data.data.praiseNum
-    //     })
-    //   }
-    // })
   },
 
   /**
@@ -151,12 +130,12 @@ Page({
 
   },
 
-  like: function() {
+  like: function () {
     var praiseNum = this.data.praiseNum
     if (praiseNum == 0) {
       //表示没有点过赞
       this.setData({
-        praiseNum: praiseNum+1,
+        praiseNum: praiseNum + 1,
         like: 1
       })
     }
@@ -177,13 +156,13 @@ Page({
       data: {
         timeId: thistimeid
       },
-      success: function(res) {
+      success: function (res) {
         console.log(res.data.text);
       }
     })
   },
 
-  collect: function() {
+  collect: function () {
     var collect = this.data.isCollect
     if (collect == 0) {
       //表示没有收藏过
@@ -209,6 +188,34 @@ Page({
       },
       success: function (res) {
         console.log(res.data.text);
+      }
+    })
+  },
+
+  random: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.URL + '/time/explore',
+      method: 'GET',
+      header: {
+        "S-TOKEN": wx.getStorageSync("userTOKEN")
+      },
+      success: function (res) {
+        console.log(res)
+        var sjc = res.data.data.updateTime;
+        console.log(sjc);
+        sjc = timestampToTime(sjc);
+
+        that.setData({
+          avatarUrl: res.data.data.avatarUrl,
+          nickName: res.data.data.nickName,
+          time: sjc,
+          content: res.data.data.content,
+          imgUrl: res.data.data.imgUrl,
+          location: res.data.data.location,
+          praiseNum: res.data.data.praiseNum,
+          topNum: 0
+        })
       }
     })
   }
