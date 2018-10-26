@@ -1,0 +1,8 @@
+<!--components/intro/intro.wxml-->
+<cover-view class='intro-main'>
+  <cover-view class='intro-container'>
+    <cover-image src='../../img/intro.png' class='intro-img'></cover-image>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='loginbtn'> 开启我的福大时光机 </button>
+    <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='loginbtn' hover-class='btn-hover' bindtap='userEmpower'> 开启我的福大时光机 </button> -->
+  </cover-view>
+</cover-view>

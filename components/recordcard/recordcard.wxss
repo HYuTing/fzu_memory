@@ -5,14 +5,14 @@
   min-height: 520rpx;
   margin-top: 16rpx;
   padding: 50rpx;
-  padding-bottom: 46rpx;
+  padding-bottom: 20rpx;
   background: #fff;
 }
 
 .header {
   position: relative;
   width: 100%;
-  margin-bottom: 16rpx;
+  margin-bottom: 26rpx;
 }
 
 .userhead {
@@ -36,12 +36,16 @@
 }
 
 .record-text {
+  display: block;
+  width: 100%;
   font-size: 32rpx;
+  word-break:break-all;
 }
 
 .record-img {
   width: 85%;
-  margin-top: 15rpx;
+  height: 350rpx;
+  margin-top: 20rpx;
   margin-bottom: 20rpx;
   border-radius: 6rpx;
 }

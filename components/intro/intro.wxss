@@ -1,0 +1,39 @@
+/* components/intro/intro.wxss */
+.intro-main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+.intro-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 420rpx;
+  height: 780rpx;
+}
+
+.intro-img {
+  width: 420rpx;
+  height: auto;
+}
+
+.loginbtn {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 32rpx;
+  color: #a30904;
+  background: transparent;
+  border: 2rpx solid #a30904;
+  border-radius: 4rpx;
+}
+
+.btn-hover {
+  background: #a30904de;
+  color: #fff;
+}

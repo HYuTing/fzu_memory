@@ -47,7 +47,7 @@ Page({
       url: app.globalData.URL + '/time/detail/' + options.id,
       method: 'GET',
       header: {
-        "S-TOKEN": wx.getStorageSync("userTOKEN")
+        "S-TOKEN": "098eadbb-2203-483d-85a2-b3e67f7c73c1" //wx.getStorageSync("userTOKEN")
       },
       success: function(res) {
         console.log(res)
@@ -172,7 +172,7 @@ Page({
       url: app.globalData.URL + '/time/praise',
       method: 'GET',
       header: {
-        "S-TOKEN": wx.getStorageSync("userTOKEN")
+        "S-TOKEN": "098eadbb-2203-483d-85a2-b3e67f7c73c1" //wx.getStorageSync("userTOKEN")
       },
       data: {
         timeId: thistimeid
@@ -202,7 +202,7 @@ Page({
       url: app.globalData.URL + '/time/collect',
       method: 'GET',
       header: {
-        "S-TOKEN": wx.getStorageSync("userTOKEN")
+        "S-TOKEN": "098eadbb-2203-483d-85a2-b3e67f7c73c1" //wx.getStorageSync("userTOKEN")
       },
       data: {
         timeId: thistimeid

@@ -21,6 +21,8 @@ Component({
     this.setData({
       height: app.globalData.height
     })
+
+    console.log(app.globalData.height)
   },
 
   /**

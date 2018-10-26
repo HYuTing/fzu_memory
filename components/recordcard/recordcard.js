@@ -22,6 +22,10 @@ Component({
       type: String,
       value: []
     },
+    content: {
+      type: String,
+      value: []
+    },
     imgUrl: {
       type: String,
       value: []

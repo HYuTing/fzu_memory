@@ -19,13 +19,13 @@
 
       
       <view class='record-list' wx:if='{{currentTab == 0}}' bindup="myStar" >
-        <recordCard wx:for="{{list}}" wx:key="{{list}}" id="{{item.id}}"  avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}" imgUrl="{{item.imgUrl}}" bindtap='toDetail' />
+        <recordCard wx:for="{{list}}" wx:key="{{list}}" id="{{item.timeId}}"  avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}" content="{{item.content}}" imgUrl="{{item.imgUrl}}" bindtap='toDetail' />
       </view>
       <view class='record-list' wx:if='{{currentTab == 1}}' bindup="myTime" >
-        <recordCard   wx:for="{{list}}" wx:key="{{list}}" id="{{item.id}}"  avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}" imgUrl="{{item.imgUrl}}" bindtap='toDetail' />
+        <recordCard   wx:for="{{list}}" wx:key="{{list}}" id="{{item.timeId}}"  avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}" content="{{item.content}}" imgUrl="{{item.imgUrl}}" bindtap='toDetail' />
       </view>
       <view class='record-list' wx:if='{{currentTab == 2}}' >
-        <recordCard />
+        <!-- <recordCard /> -->
       </view>
 
     </view>

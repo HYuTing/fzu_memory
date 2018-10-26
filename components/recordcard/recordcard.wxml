@@ -6,6 +6,7 @@
     <text class='reporttime'>{{updateTime}}</text>
     <!--<image class="delete" src="../../img/delete.png" wx:if = '{{condition}}'></image>-->    
   </view>
+
   <text class='record-text'>{{content}}</text>
-  <image src='{{imgUrl}}' class='record-img' mode="widthFix"  ></image>
+  <image src='{{imgUrl}}' class='record-img' mode="center" ></image>
 </view>

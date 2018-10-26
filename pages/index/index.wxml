@@ -7,30 +7,25 @@
       longitude="{{longitude}}"
       markers="{{markers}}"
       subkey="GBZBZ-JGAH2-OSWUF-CPPZN-YRDVZ-U7BR3"
-      show-location="true"
-      wx:if="{{hasmarks}}">
-      <cover-view class='loginprompt' wx:if="{{loginflag == 0}}">
+      show-location="true">
+      <!-- wx:if="{{hasmarks}}" -->
+
+      <intropage bind:empowerlogin='empower' wx:if="{{loginflag == 0}}"/>
+
+      <!-- <cover-view class='loginprompt' wx:if="{{loginflag == 0}}">
         <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='loginbtn'> 开启 </button>
-      </cover-view>
+      </cover-view> -->
+
       <cover-view class="btns" wx:if="{{loginflag == 1}}">
         <cover-image src="../../img/people.png" class="iconbtn" bindtap="tohomepage"></cover-image>
         <cover-image src="../../img/like.png" class="iconbtn" bindtap="changeName"></cover-image>
         <cover-image src="../../img/selection.png" class="iconbtn" bindtap="toranklist"></cover-image>
       </cover-view>
+
       <cover-view class="btns addbtncontainer" wx:if="{{loginflag == 1}}">
         <cover-image src="../../img/round_add_fill1.png" class="addbtn" bindtap="toReport"></cover-image>
       </cover-view>
 
-      <!-- <cover-view class='scroll-box' wx:if="{{loginflag == 1}}">
-        <cover-view class='card'></cover-view>
-        <cover-view class='card'></cover-view>
-        <cover-view class='card'></cover-view>
-        <cover-view class='card'></cover-view>
-      </cover-view> -->
-
     </map>
   </view>
-  <!-- <view class="btn-area">
-    <button bindtap="moveToLocation" class="page-body-button" type="primary">移动位置</button>
-  </view> -->
 </view>

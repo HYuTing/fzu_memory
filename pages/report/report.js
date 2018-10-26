@@ -103,7 +103,7 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function(res) {
-        // console.log(res);
+         console.log(res);
         that.setData({
           src: res.tempFilePaths,
           hasPic: true
@@ -113,7 +113,7 @@ Page({
   },
 
   updateContent: function(e) {
-    console.log(e.detail.value.length);
+    // console.log(e.detail.value.length);
     if (this.data.content.length > 140) {
       wx.showToast({
         title: '超出最大字数140',
@@ -160,9 +160,10 @@ Page({
           timeId: res.data.data.id
         })
 
-        //console.log(res.data);
+        console.log(res.data);
+        console.log(that.data.src[0]);
         wx.uploadFile({
-          url: 'http://up-z2.qiniup.com',
+          url: 'https://up-z2.qiniup.com',
           filePath: that.data.src[0],
           name: 'file',
           header: {

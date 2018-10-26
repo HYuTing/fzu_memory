@@ -1,17 +1,3 @@
-function Person(id, latitude, longitude, name) {
-  this.id = id;
-  this.latitude = latitude;
-  this.longitude = longitude;
-  this.iconPath = '/img/location.png';
-}
-
-var marks = new Array();
-var i;
-
-// for (i = 1; i <= 10; i++) {
-//   marks.push(new Person(i, 26.050 + i / 10, 119.1981 + i / 10));
-// }
-
 const app = getApp()
 
 Page({
@@ -26,77 +12,59 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var that = this
+  onLoad: function(options) {
+    var that = this;
+    //判断用户是否授权
     wx.getSetting({
       success: res => {
-        console.log(res.authSetting);
+        console.log(res);
+        //如果用户已经授过权，则直接进入地图
         if (res.authSetting["scope.userInfo"] == true) {
-          this.setData({
+          that.setData({
             loginflag: 1
-          })
-        }
-        if (this.data.loginflag == 1) {
-          wx.login({
-            success: r => {
-              if (r.code) {
-                wx.request({
-                  url: app.globalData.URL + '/user/login',
-                  method: 'GET',
-                  data: {
-                    "code": r.code
-                  },
-                  success: function (res) {
-                    console.log(res.data)
-                    //console.log(res.header["S-TOKEN"])
-                    var tokennew;
-
-                    wx.setStorage({
-                      key: 'userTOKEN',
-                      data: res.header["S-TOKEN"],
-                    })
-
-                    tokennew = res.header["S-TOKEN"];
-
-                    wx.request({
-                      url: app.globalData.URL + '/time/map',
-                      method: 'GET',
-                      header: {
-                        "S-TOKEN": '' + tokennew
-                      },
-                      success: r2 => {
-                        var marksdata = r2.data.data;
-                        for (i = 0; i < marksdata.length; i++) {
-                          marksdata[i].iconPath = '/img/location.png';
-                          //marks.push(obj);
-                        }
-                        that.setData({
-                          markers: marksdata,
-                          hasmarks: true
-                        })
-                        console.log(that.data.markers)
-                        console.log('hlxsz' + that.data.hasmarks)
-
-                      }
-                    })
-
-                  },
-                  fail: function (res) {
-                    console.log('登录失败')
-                  }
-                })
-              }
-            }
           })
         }
       }
     })
 
+    if (that.data.loginflag == 1) {
+      //如果已经授权过，则调用登录login
+      wx.login({
+        success: res => {
+          console.log(res);
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          if(res.code) {
+            wx.request({
+              url: app.globalData.URL + '/user/login',
+              method: 'GET',
+              data: {
+                "code": res.code
+              },
+              success: r => {
+                console.log(r);
+                //将TOKEN存在仓库中
+                wx.setStorage({
+                  key: 'userTOKEN',
+                  data: r.header["S-TOKEN"],
+                })
+
+                var usertoken = r.header["S-TOKEN"];
+                that.getMapmarkers(usertoken);
+                console.log(that.data.markers);
+              }
+            })
+          }
+        },
+        fail: function() {
+          console.log('调用微信登录接口失败')
+        }
+      })
+    }
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+ * 生命周期函数--监听页面初次渲染完成
+ */
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')
   },
@@ -104,84 +72,63 @@ Page({
   moveToLocation: function () {
     this.mapCtx.moveToLocation()
   },
-
-  changeName: function() {
-    wx.navigateTo({
-      url: '../test/index',
-    })
-  },
   
-  tohomepage: function() {
+  tohomepage: function () {
     wx.navigateTo({
       url: '../homepage/homepage',
     })
   },
 
-  toranklist: function() {
+  toranklist: function () {
     wx.navigateTo({
       url: '../ranklist/ranklist',
     })
   },
 
-  toReport: function() {
+  toReport: function () {
     wx.navigateTo({
       url: '../report/report',
     })
   },
 
-  getUserInfo: function (e) {
-    wx.login({
-      success: r => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        if (r.code) {
-          // 获取用户信息
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                loginflag: 1
-              })
-              wx.request({
-                url: app.globalData.URL + '/user/oauth',
-                method: 'POST',
-                data: {
-                  code: r.code,
-                  encryptedData: res.encryptedData,
-                  ivStr: res.iv
-                },
-                success: function (res) {
-                  wx.setStorage({
-                    key: 'userTOKEN',
-                    data: res.header["S-TOKEN"],
-                  })
-                  console.log(res)
-                },
-                fail: function (res) {
-                  console.log('请求失败')
-                }
-              })
-            },
-            fail: res => {
-              wx.showModal({
-                title: 'lxGG写的好辛苦',
-                content: '授权一个吧',
-              })
-            }
-          })
-
-          wx.getLocation({
-            success: res => {
-              this.setData({
-                latitude: res.latitude,
-                longitude: res.longitude
-              })
-              // console.log(that.data.markers);
-            },
-          })
-
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
+  //获取地图上的点
+  getMapmarkers: function (token) {
+    var that = this;
+    wx.request({
+      url: app.globalData.URL + '/time/map',
+      method: 'GET',
+      header: {
+        "S-TOKEN": '' + token
+      },
+      success: res => {
+        var marksdata = res.data.data;
+        for (var i = 0; i < marksdata.length; i++) {
+          marksdata[i].iconPath = '/img/location.png';
         }
+        that.setData({
+          markers: marksdata,
+          hasmarks: true
+        })
       }
+    })
+  },
+
+  //子组件中点击事件触发父组件事件
+  empower: function(event) {
+    var ifempower = event.detail.val;
+     console.log(ifempower);
+    this.setData({
+      loginflag: ifempower
+    })
+    
+    wx.getLocation({
+      success: res => {
+        this.setData({
+          latitude: res.latitude,
+          longitude: res.longitude
+        })
+        // console.log(that.data.markers);
+      },
     })
   }
 })

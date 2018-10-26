@@ -1,17 +1,13 @@
 {
-  "pages": [
+  "pages":[
     "pages/index/index",
-    "pages/report/report",
     "pages/homepage/homepage",
-    "pages/test/index",
-    "pages/detail/detail",   
-    
-    "pages/share/share",
     "pages/ranklist/ranklist",
-    "pages/demo/index",
+    "pages/detail/detail",
+    "pages/report/report",
     "pages/logs/logs"
   ],
-  "window": {
+  "window":{
     "backgroundTextStyle": "light",
     "navigationStyle": "custom"
   }

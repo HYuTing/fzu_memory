@@ -17,10 +17,10 @@
         <image class="price-icon" src="../../img/1st.png"></image>
         <image class="head-icon" src="{{firstHeadUrl}}"></image>
         <text class="username">{{firstusrName}}</text>
-        <view class="likes">
+        <!-- <view class="likes">
           <text class="like-nums">{{firstlikeNums}}</text>
           <image class="like-icon" src="../../img/like4.png"></image>
-        </view>
+        </view> -->
       </view>    
     </view>
 
@@ -38,10 +38,10 @@
         <image class="price-icon" src="../../img/2nd.png"></image>
         <image class="head-icon" src="{{secondHeadUrl}}"></image>
         <text class="username">{{secondusrName}}</text>
-        <view class="likes">
+        <!-- <view class="likes">
           <text class="like-nums">{{secondlikeNums}}</text>
           <image class="like-icon" src="../../img/like4.png"></image>
-        </view>
+        </view> -->
       </view>    
     </view>
 
@@ -59,15 +59,15 @@
         <image class="price-icon" src="../../img/3rd.png"></image>
         <image class="head-icon" src="{{thirdHeadUrl}}"></image>
         <text class="username">{{thirdusrName}}</text>
-        <view class="likes">
+        <!-- <view class="likes">
           <text class="like-nums">{{thirdlikeNums}}</text>
           <image class="like-icon" src="../../img/like4.png"></image>
-        </view>
+        </view> -->
       </view>    
     </view>
 
     <view class="price" wx:for="{{list}}" wx:key="{{list}}">
-      <!-- <view class='masking' id="{{item.id}}" bindtap='toDetail'></view> -->
+      <view class='masking' id="{{item.id}}" bindtap='toDetail'></view>
       <view class="imgs">
         <view class="img1"><image class="text-img" src="{{item.imgUrl}}"></image></view>
       <view class="triangle"></view>
@@ -76,10 +76,10 @@
         <text class="rank-num1">{{item.rankNum}}</text>
         <image class="head-icon" src="{{item.avatarUrl}}"></image>
         <text class="username">{{item.nickName}}</text>
-        <view class="likes">
+        <!-- <view class="likes">
           <text class="like-nums">{{item.praiseNum}}</text>
           <image class="like-icon" src="../../img/like4.png"></image>
-        </view>
+        </view> -->
       </view>    
     </view>
     
