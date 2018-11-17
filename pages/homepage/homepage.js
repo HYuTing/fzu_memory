@@ -107,13 +107,13 @@ Page({
     })
   },
 
-  toDetail: function (e) {
-    var ids = e.target.id;
-    console.log(ids);
-    wx.navigateTo({
-      url: '../detail/detail?id=' + ids
-    })
-  },
+  // toDetail: function (e) {
+  //   var ids = e.target.id;
+  //   console.log(ids);
+  //   wx.navigateTo({
+  //     url: '../detail/detail?id=' + ids
+  //   })
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

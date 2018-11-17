@@ -47,6 +47,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    URL: 'https://time.huanglexing.com'
+    URL: 'https://time.w2fzu.com'
   }
 })

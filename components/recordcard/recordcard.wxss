@@ -61,10 +61,11 @@
   color: #C0C4CC;
 }
 
-.delete {
-  width: 54rpx; 
-  height: 54rpx;
-  margin-left: 462rpx;
+.deletebtn {
   position: absolute;
-  margin-top: 15rpx;
+  right: 0;
+  width: 44rpx; 
+  padding: 10rpx;
+  border-radius: 50%;
+  background: transparent;
 }

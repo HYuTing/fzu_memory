@@ -1,0 +1,23 @@
+<navBar navbarTitle = '' navbarColor = '#D59893'/>
+<view class='main' style='margin-top: {{marginTop*2}}rpx;'>
+  <view class='aa'>
+    <view animation="{{animationData0}}" class='img0 textcontainer' style='z-index: {{index_0}};' bindtap='bindtap_img' id='0'>
+      <view class='userInfo'>
+        <image src='{{avatarUrl}}' class='userHeader'></image>
+        <view class='uesrName'>{{nickName}}</view>
+        <!-- <image class="star" src="../../img/selection{{isCollect+3}}.png" bindtap='collect'></image> -->
+        <!-- <image class="star" src="../../img/selection3.png" bindtap='collect'></image>
+        <text class='new-time'>{{time}}</text> -->
+      </view>
+    </view>
+
+
+    <view animation="{{animationData1}}" class='img1 textcontainer' style='z-index: {{index_1}};' bindtap='bindtap_img' id='1'></view>
+
+
+    <view animation="{{animationData2}}" class='img2 textcontainer' style='z-index: {{index_2}};' bindtap='bindtap_img' id='2'></view>
+  </view>
+  
+  <view class='is_height_1' id="is_height_1" style='height:120rpx; width:300rpx;'></view>
+  <view id="is_height_2" style='height:380rpx; width:200rpx;'></view>
+</view>

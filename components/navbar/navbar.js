@@ -22,7 +22,7 @@ Component({
       height: app.globalData.height
     })
 
-    console.log(app.globalData.height)
+    // console.log(app.globalData.height)
   },
 
   /**
