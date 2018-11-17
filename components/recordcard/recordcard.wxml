@@ -1,13 +1,14 @@
 <!--components/recordcard/recordcard.wxml-->
-<view class='time-record' id="{{id}}" bindtap='toDetail' wx:if="{{deleteflag}}">
+<view class='time-record' id="{{ids}}" bindtap='toDetail' wx:if="{{deleteflag}}">
   <view class='header'>
     <image src='{{avatarUrl}}' class='userhead'></image>
     <text class='username'>{{nickName}}</text>
     <text class='reporttime'>{{updateTime}}</text>
     <image src='../../img/delete3.png' class='deletebtn' mode="widthFix" wx:if="{{condition == 1}}" catchtap ='delete'></image>
+    {{id}}
   </view>
 
   <text class='record-text'>{{content}}</text>
-  <!-- <image src='{{imgUrl}}' class='record-img' mode="center" ></image> -->
-  <image src='../../img/user_head.png' class='record-img' mode="center" ></image>
+  <image src='{{imgUrl}}' class='record-img' mode="center" ></image>
+  <!-- <image src='../../img/user_head.png' class='record-img' mode="center" ></image> -->
 </view>

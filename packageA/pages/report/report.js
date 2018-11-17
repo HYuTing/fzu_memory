@@ -10,7 +10,7 @@ Page({
     hasPic:false,
     marginTop: '',
     content: '',
-    src: '../../img/add.png',
+    src: '../../../img/add.png',
     longitude: '',
     latitude: '',
     positionInfo: '',

@@ -1,14 +1,20 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/test1/test1",
-    "pages/test/test",
-    "pages/homepage/homepage",
-    "pages/ranklist/ranklist",
-    "pages/detail/detail",
-    "pages/report/report",
-    "pages/share/share",
     "pages/logs/logs"
+  ],
+  "subpackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/detail/detail",
+        "pages/homepage/homepage",
+        "pages/ranklist/ranklist",
+        "pages/report/report",
+        "pages/share/share",
+        "pages/test/test"
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",

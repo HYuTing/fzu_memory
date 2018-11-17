@@ -75,25 +75,25 @@ Page({
   
   tohomepage: function () {
     wx.navigateTo({
-      url: '../homepage/homepage',
+      url: '../../packageA/pages/homepage/homepage',
     })
   },
 
   torandom: function() {
     wx.navigateTo({
-      url: '../test/test',
+      url: '../../packageA/pages/test/test',
     })
   },
 
   toranklist: function () {
     wx.navigateTo({
-      url: '../ranklist/ranklist',
+      url: '../../packageA/pages/ranklist/ranklist',
     })
   },
 
   toReport: function () {
     wx.navigateTo({
-      url: '../report/report',
+      url: '../../packageA/pages/report/report',
     })
   },
 

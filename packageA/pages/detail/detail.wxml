@@ -6,7 +6,7 @@
     <view class='userInfo'>
       <image src='{{avatarUrl}}' class='userHeader'></image>
       <view class='uesrName'>{{nickName}}</view>
-      <image class="star" src="../../img/selection{{isCollect+3}}.png" bindtap='collect'></image>
+      <image class="star" src="../../../img/selection{{isCollect+3}}.png" bindtap='collect'></image>
       <text class='new-time'>{{time}}</text>
       <!-- <text class="rank-text">F赞榜</text>
       <text class="rank-text2"> 第 </text>
@@ -20,13 +20,13 @@
         <image src='{{imgUrl}}' class='textImg' mode="widthFix"></image>
       </view>
       <view class='locadInfo'>
-        <image src='../../img/locationicon.png' class='locadicon'></image>
+        <image src='../../../img/locationicon.png' class='locadicon'></image>
         {{location}}
       </view>
       <view class='iconbtns'>
-        <image src='../../img/like{{like+3}}.png' class='iconbtn' bindtap='like'></image>
+        <image src='../../../img/like{{like+3}}.png' class='iconbtn' bindtap='like'></image>
         <text class="like-num">{{praiseNum}}</text>
-        <image src='../../img/share.png' class='iconbtn' bindtap="share"></image>
+        <image src='../../../img/share.png' class='iconbtn' bindtap="share"></image>
          <text class="share-num"></text>     
         <!--<image src='../../img/start.png' class='iconbtn'></image>-->
       </view>

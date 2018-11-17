@@ -6,7 +6,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    id: Number,
+    ids: Number,
     avatarUrl: {
       type: String,
       value: []
@@ -53,8 +53,8 @@ Component({
    */
   methods: {
     toDetail: function (e) {
-      var ids = this.properties.id;
-      console.log(ids);
+      var ids = this.properties.ids;
+      console.log(this.properties);
       wx.navigateTo({
         url: '../detail/detail?id=' + ids
       })

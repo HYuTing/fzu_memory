@@ -21,6 +21,7 @@ Page({
     winHeight: '',
     currentTab: 1,
     scrollLeft: 0,
+    list: []
   },
 
   /**
@@ -36,7 +37,7 @@ Page({
         "S-TOKEN": wx.getStorageSync("userTOKEN")
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         names = res.data.data.nickName;
         header = res.data.data.avatarUrl;
         that.setData({

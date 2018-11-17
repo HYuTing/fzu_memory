@@ -2,9 +2,9 @@
 const app = getApp()
 Page({
   data: {
-    imageBg: "../../img/test.jpg",//背景图片
-    imageHead: "../../img/user-head.jpg",//头像
-    imageEwm: "../../img/logo.jpg",//二维码
+    imageBg: "../../../img/test.jpg",//背景图片
+    imageHead: "../../../img/user-head.jpg",//头像
+    imageEwm: "../../../img/logo.jpg",//二维码
     username: "Loutloi",//用户名
     text: "Now is 2:00am, it's time to sleep!",//文字说明
     ids: ""
@@ -221,7 +221,7 @@ context.textBaseline = baseline;
     var imageHead = that.data.imageHead;
     var imageEwm = that.data.imageEwm;
     var imageZw = that.data.imageBg;
-    var imageWrite = "../../img/write.png";
+    var imageWrite = "../../../img/write.png";
     var name = that.data.username;
     var texts = that.data.text;
     console.log(that.data.username);

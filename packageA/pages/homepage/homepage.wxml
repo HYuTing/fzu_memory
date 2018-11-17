@@ -3,7 +3,7 @@
   <navBar navbarTitle = '个人主页' navbarColor = 'transparent'/>
   <view class='main' >
     <view class='user-info'>
-      <image src='../../img/user_head.png' class='back-img'></image>
+      <image src='../../../img/user_head.png' class='back-img'></image>
       <view class='user-head-container'>  
         <image src='{{myHead}}' class='user-head'></image>
         <text>{{myName}}</text>
@@ -19,14 +19,13 @@
 
       
       <view class='record-list' wx:if='{{currentTab == 0}}' bindup="myStar" >
-        <recordCard wx:for="{{list}}" wx:key="{{list}}" id="{{item.timeId}}"  avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}" content="{{item.content}}" imgUrl="{{item.imgUrl}}" bindtap='toDetail' />
-        <recordCard id="{{item.id}}aaa" avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}bbb" updateTime="{{item.updateTime}}ccc" content="{{item.content}}ddd" imgUrl="{{item.imgUrl}}" bindtap='toDetail' wxifcondition="0"/>
+        <!-- <recordCard wx:for="{{list}}" wx:key="{{list}}" id="{{item.timeId}}"  avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}" content="{{item.content}}" imgUrl="{{item.imgUrl}}" bindtap='toDetail' /> -->
+        <recordCard wx:for="{{list}}" wx:key="{{list}}" ids="{{item.timeId}}" avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}ccc" content="{{item.content}}" imgUrl="{{item.imgUrl}}" bindtap='toDetail' wxifcondition="0"/>
       </view>
 
       <view class='record-list' wx:if='{{currentTab == 1}}' bindup="myTime" >
         <!-- <recordCard   wx:for="{{list}}" wx:key="{{list}}" id="{{item.id}}"  avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}" content="{{item.content}}" imgUrl="{{item.imgUrl}}" bindtap='toDetail' /> -->
-        <recordCard id="{{item.id}}" avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}bbb" updateTime="{{item.updateTime}}ccc" content="{{item.content}}ddd" imgUrl="{{item.imgUrl}}" wxifcondition="1"/>
-        <recordCard id="{{item.id}}" avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}abc" updateTime="{{item.updateTime}}cde" content="{{item.content}}def" imgUrl="{{item.imgUrl}}" wxifcondition="1"/>
+        <recordCard wx:for="{{list}}" wx:key="{{list}}" ids="{{item.id}}" avatarUrl="{{item.avatarUrl}}" nickName="{{item.nickName}}" updateTime="{{item.updateTime}}" content="{{item.content}}" imgUrl="{{item.imgUrl}}" wxifcondition="1"/>
       </view>
 
       <view class='record-list' wx:if='{{currentTab == 2}}' >

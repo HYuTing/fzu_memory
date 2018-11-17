@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "navBar": "../../components/navbar/navbar",
-    "recordCard": "../../components/recordcard/recordcard"
-  }
-}

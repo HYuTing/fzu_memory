@@ -17,7 +17,7 @@
       </view>
     </view>
     <view class='addView'>
-      <image src='../../img/locationicon.png' class='locationicon'></image>
+      <image src='../../../img/locationicon.png' class='locationicon'></image>
       <text class='locationAddress'>{{positionInfo}}</text>
       <button class='reportBtn' bindtap='report'>发表</button>
     </view>
